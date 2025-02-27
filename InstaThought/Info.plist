@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PlayfairDisplay-Regular.ttf</string>
+		<string>SourceSans3.ttf</string>
+		<string>QuattrocentoSans.ttf</string>
+		<string>FanwoodText-Regular.ttf</string>
+		<string>LibreBaskerville-Regular.ttf</string>
+		<string>Lato-Regular.ttf</string>
+		<string>ProzaLibre-Regular.ttf</string>
+		<string>EBGaramond-VariableFont_wght.ttf</string>
+		<string>FaunaOne-Regular.ttf</string>
+		<string>Alice-Regular.ttf</string>
+		<string>JosefinSans-VariableFont_wght.ttf</string>
+		<string>Montserrat-VariableFont_wght.ttf</string>
+		<string>Merriweather-Regular.ttf</string>
+		<string>Nunito-VariableFont_wght.ttf</string>
+		<string>Karla-VariableFont_wght.ttf</string>
+		<string>PTSans-Regular.ttf</string>
+		<string>Cardo-Regular.ttf</string>
+		<string>CrimsonText-Regular.ttf</string>
+		<string>Poppins-Medium.ttf</string>
+		<string>Inconsolata-VariableFont_wdth,wght.ttf</string>
+		<string>Slabo27px-Regular.ttf</string>
+		<string>Ledger-Regular.ttf</string>
+		<string>PontanoSans-VariableFont_wght.ttf</string>
+		<string>Cantarell-Regular.ttf</string>
+		<string>Cabin-Regular.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Andika-Regular.ttf</string>
+		<string>Mulish-VariableFont_wght.ttf</string>
+		<string>OpenSans-VariableFont_wdth,wght.ttf</string>
+		<string>Quicksand-VariableFont_wght.ttf</string>
+		<string>Hind-Medium.ttf</string>
+		<string>Lora-VariableFont_wght.ttf</string>
+		<string>SourceSerif4-Regular.ttf</string>
+	</array>
+</dict>
+</plist>
