@@ -38,7 +38,7 @@ struct FullPreviewView: View {
                 .fontWeight(.bold)
                 .padding()
                 .foregroundColor(viewModel.previewViewModels.first!.image.shouldUseWhiteText ? .white : .black)
-                .background(Color.white.opacity(0.2)) // Simulate transparency
+                .background(Color.white.opacity(0.2))
                 .cornerRadius(8)
                 .padding(.horizontal)
             }

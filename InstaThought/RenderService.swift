@@ -11,6 +11,7 @@ import UIKit
 
 class RenderService {
   static func renderPreviews(text: String, style: Style) -> [PreviewViewModel] {
+    let startTime = CFAbsoluteTimeGetCurrent()
     let sections = text.components(separatedBy: "\n@")
     var previews: [PreviewViewModel] = []
     
@@ -55,6 +56,9 @@ class RenderService {
         }
       }
     }
+    
+    let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+    print("Preview rendering completed in \(String(format: "%.3f", timeElapsed)) seconds")
     
     return previews
   }

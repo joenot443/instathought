@@ -45,6 +45,16 @@
 		020C77402C921BFC008A47F5 /* SourceSans3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 020C773F2C921BFC008A47F5 /* SourceSans3.ttf */; };
 		027078872C89341E00273775 /* FullPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027078862C89341E00273775 /* FullPreviewView.swift */; };
 		027078892C894F9400273775 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027078882C894F9400273775 /* PhotoService.swift */; };
+		02915FBE2D8801500089B56F /* TemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FBD2D8801500089B56F /* TemplateView.swift */; };
+		02915FC02D8872520089B56F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02915FBF2D8872520089B56F /* Launch Screen.storyboard */; };
+		02915FC22D887B4B0089B56F /* PreviewCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FC12D887B4B0089B56F /* PreviewCarouselView.swift */; };
+		02915FC62D887BB00089B56F /* StylePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FC52D887BA90089B56F /* StylePageView.swift */; };
+		02915FC92D887C400089B56F /* EditorPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FC82D887C360089B56F /* EditorPageView.swift */; };
+		02915FCB2D8893120089B56F /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FCA2D8893120089B56F /* ColorPickerView.swift */; };
+		02915FCF2D88B0EA0089B56F /* AdjusterViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FCE2D88B0E70089B56F /* AdjusterViews.swift */; };
+		02915FD12D88CAEF0089B56F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FD02D88CAEF0089B56F /* Theme.swift */; };
+		02915FD32D88DC190089B56F /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FD22D88DC190089B56F /* Buttons.swift */; };
+		02915FD52D8A00110089B56F /* output_file.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 02915FD42D8A00110089B56F /* output_file.mp4 */; };
 		02946D942C8F8FC90029D941 /* FontPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 02946D932C8F8FC90029D941 /* FontPicker */; };
 		029F6BEE2C88CE49007E7081 /* InstaNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F6BED2C88CE49007E7081 /* InstaNoteApp.swift */; };
 		029F6BF02C88CE49007E7081 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F6BEF2C88CE49007E7081 /* TextView.swift */; };
@@ -97,6 +107,16 @@
 		020C773F2C921BFC008A47F5 /* SourceSans3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceSans3.ttf; sourceTree = "<group>"; };
 		027078862C89341E00273775 /* FullPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPreviewView.swift; sourceTree = "<group>"; };
 		027078882C894F9400273775 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		02915FBD2D8801500089B56F /* TemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateView.swift; sourceTree = "<group>"; };
+		02915FBF2D8872520089B56F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		02915FC12D887B4B0089B56F /* PreviewCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCarouselView.swift; sourceTree = "<group>"; };
+		02915FC52D887BA90089B56F /* StylePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylePageView.swift; sourceTree = "<group>"; };
+		02915FC82D887C360089B56F /* EditorPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPageView.swift; sourceTree = "<group>"; };
+		02915FCA2D8893120089B56F /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
+		02915FCE2D88B0E70089B56F /* AdjusterViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjusterViews.swift; sourceTree = "<group>"; };
+		02915FD02D88CAEF0089B56F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = InstaThought/Theme.swift; sourceTree = SOURCE_ROOT; };
+		02915FD22D88DC190089B56F /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		02915FD42D8A00110089B56F /* output_file.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = output_file.mp4; sourceTree = "<group>"; };
 		029F6BEA2C88CE49007E7081 /* InstaThought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaThought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029F6BED2C88CE49007E7081 /* InstaNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaNoteApp.swift; sourceTree = "<group>"; };
 		029F6BEF2C88CE49007E7081 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -164,6 +184,41 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		02915FC32D887B680089B56F /* Style Page [2] */ = {
+			isa = PBXGroup;
+			children = (
+				02915FCE2D88B0E70089B56F /* AdjusterViews.swift */,
+				02915FD22D88DC190089B56F /* Buttons.swift */,
+				02915FC52D887BA90089B56F /* StylePageView.swift */,
+				02B1FC582C8F63EF00BE8E40 /* StyleControlView.swift */,
+				02B1FC542C8F524000BE8E40 /* StyleBrowserView.swift */,
+				02B1FC562C8F5F6400BE8E40 /* Style.swift */,
+				029F6BEF2C88CE49007E7081 /* TextView.swift */,
+				02915FC12D887B4B0089B56F /* PreviewCarouselView.swift */,
+				02915FCA2D8893120089B56F /* ColorPickerView.swift */,
+			);
+			path = "Style Page [2]";
+			sourceTree = "<group>";
+		};
+		02915FC42D887B860089B56F /* Preview Page [3] */ = {
+			isa = PBXGroup;
+			children = (
+				029F6BFB2C88DCD8007E7081 /* RenderView.swift */,
+				027078862C89341E00273775 /* FullPreviewView.swift */,
+			);
+			path = "Preview Page [3]";
+			sourceTree = "<group>";
+		};
+		02915FC72D887C050089B56F /* Editor Page [1] */ = {
+			isa = PBXGroup;
+			children = (
+				02915FC82D887C360089B56F /* EditorPageView.swift */,
+				029F6BED2C88CE49007E7081 /* InstaNoteApp.swift */,
+				02915FBD2D8801500089B56F /* TemplateView.swift */,
+			);
+			path = "Editor Page [1]";
+			sourceTree = "<group>";
+		};
 		029F6BE12C88CE49007E7081 = {
 			isa = PBXGroup;
 			children = (
@@ -185,18 +240,17 @@
 			children = (
 				020C76FB2C91DA30008A47F5 /* Info.plist */,
 				020C76F42C91D8B7008A47F5 /* fonts */,
-				027078862C89341E00273775 /* FullPreviewView.swift */,
 				020C773A2C920D3E008A47F5 /* UIImage+Text.swift */,
 				027078882C894F9400273775 /* PhotoService.swift */,
-				029F6BED2C88CE49007E7081 /* InstaNoteApp.swift */,
-				02B1FC562C8F5F6400BE8E40 /* Style.swift */,
-				029F6BEF2C88CE49007E7081 /* TextView.swift */,
-				02B1FC582C8F63EF00BE8E40 /* StyleControlView.swift */,
+				02915FD02D88CAEF0089B56F /* Theme.swift */,
+				02915FC72D887C050089B56F /* Editor Page [1] */,
+				02915FC32D887B680089B56F /* Style Page [2] */,
+				02915FC42D887B860089B56F /* Preview Page [3] */,
 				029F6BFF2C89105D007E7081 /* String+Extensions.swift */,
+				02915FD42D8A00110089B56F /* output_file.mp4 */,
 				029F6BFD2C88EFC5007E7081 /* RenderService.swift */,
-				029F6BFB2C88DCD8007E7081 /* RenderView.swift */,
-				02B1FC542C8F524000BE8E40 /* StyleBrowserView.swift */,
 				029F6BF12C88CE4C007E7081 /* Assets.xcassets */,
+				02915FBF2D8872520089B56F /* Launch Screen.storyboard */,
 				029F6BF32C88CE4C007E7081 /* Preview Content */,
 			);
 			path = InstaThought;
@@ -278,6 +332,7 @@
 			files = (
 				029F6BF52C88CE4C007E7081 /* Preview Assets.xcassets in Resources */,
 				020C77072C91E8D5008A47F5 /* FaunaOne-Regular.ttf in Resources */,
+				02915FD52D8A00110089B56F /* output_file.mp4 in Resources */,
 				020C77292C91FF78008A47F5 /* Cantarell-Regular.ttf in Resources */,
 				020C77232C91FECE008A47F5 /* Ledger-Regular.ttf in Resources */,
 				020C77212C91FEA5008A47F5 /* Slabo27px-Regular.ttf in Resources */,
@@ -296,6 +351,7 @@
 				020C76FF2C91E7ED008A47F5 /* LibreBaskerville-Regular.ttf in Resources */,
 				020C76FD2C91E799008A47F5 /* FanwoodText-Regular.ttf in Resources */,
 				020C772D2C920131008A47F5 /* Andika-Regular.ttf in Resources */,
+				02915FC02D8872520089B56F /* Launch Screen.storyboard in Resources */,
 				020C77012C91E82C008A47F5 /* Lato-Regular.ttf in Resources */,
 				020C77132C91F415008A47F5 /* Merriweather-Regular.ttf in Resources */,
 				020C772F2C9201A0008A47F5 /* Hind-Medium.ttf in Resources */,
@@ -325,11 +381,19 @@
 				029F6C002C89105D007E7081 /* String+Extensions.swift in Sources */,
 				029F6BF02C88CE49007E7081 /* TextView.swift in Sources */,
 				02B1FC552C8F524000BE8E40 /* StyleBrowserView.swift in Sources */,
+				02915FCF2D88B0EA0089B56F /* AdjusterViews.swift in Sources */,
 				020C773B2C920D3E008A47F5 /* UIImage+Text.swift in Sources */,
+				02915FC92D887C400089B56F /* EditorPageView.swift in Sources */,
 				027078872C89341E00273775 /* FullPreviewView.swift in Sources */,
 				029F6BEE2C88CE49007E7081 /* InstaNoteApp.swift in Sources */,
 				029F6BFC2C88DCD8007E7081 /* RenderView.swift in Sources */,
+				02915FCB2D8893120089B56F /* ColorPickerView.swift in Sources */,
+				02915FC62D887BB00089B56F /* StylePageView.swift in Sources */,
 				02B1FC592C8F63EF00BE8E40 /* StyleControlView.swift in Sources */,
+				02915FBE2D8801500089B56F /* TemplateView.swift in Sources */,
+				02915FD12D88CAEF0089B56F /* Theme.swift in Sources */,
+				02915FC22D887B4B0089B56F /* PreviewCarouselView.swift in Sources */,
+				02915FD32D88DC190089B56F /* Buttons.swift in Sources */,
 				029F6BFE2C88EFC5007E7081 /* RenderService.swift in Sources */,
 				02B1FC572C8F5F6400BE8E40 /* Style.swift in Sources */,
 				027078892C894F9400273775 /* PhotoService.swift in Sources */,
@@ -470,12 +534,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InstaThought/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = InstaThought;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save text pages";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,12 +570,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InstaThought/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = InstaThought;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save text pages";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
