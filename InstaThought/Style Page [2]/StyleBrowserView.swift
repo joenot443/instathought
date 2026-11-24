@@ -11,21 +11,16 @@ struct StyleBrowserView: View {
   
   var body: some View {
     ScrollView {
-      LazyVGrid(columns: columns, spacing: 4.0) {
+      LazyVGrid(columns: columns, spacing: 10.0) {
         ForEach(styles.indices, id: \.self) { index in
-          Button(action: {
+          RenderViewWrapper(text: text, style: styles[index].browserStyle) {
             onStyleSelected(styles[index])
             presentationMode.wrappedValue.dismiss()
-          }) {
-            RenderViewWrapper(text: text, style: styles[index].scaledTo(scale: 0.6))
-              .tag(index)
-              .frame(idealWidth: 300.0, idealHeight: 300.0)
-          }
-          .buttonStyle(PlainButtonStyle())
+          }.aspectRatio(1.3, contentMode: .fit)
         }
-        .padding()
-        .navigationTitle("Select a Style")
       }
+      .padding()
+      .navigationTitle("Select a Style")
     }
   }
 }

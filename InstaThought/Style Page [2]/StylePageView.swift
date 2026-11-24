@@ -1,28 +1,52 @@
 import SwiftUI
 import AlertToast
-import Combine
 
-// Second page: Style controls, preview carousel, and buttons
 struct StyleAndPreviewPage: View {
-  @ObservedObject var viewModel: InstaThoughtViewModel
-  
-  @State private var isFontSelectorPresented: Bool = false
-  @State private var title: String = "Editable Title"
+    @ObservedObject var viewModel: InstaThoughtViewModel
+    @State private var activePanel: StylePanel = .none
 
-  var body: some View {
-    GeometryReader { geometry in
-      VStack(alignment: .center, spacing: 8.0) {
-        StyleControlView(viewModel: viewModel)
-        PreviewCarouselView(isRendering: $viewModel.isRenderingInProgress, previewViewModels: viewModel.previewViewModels)
-        PreviewButtonsView(viewModel: viewModel)
-      }
-      .fontPicker(isPresented: $isFontSelectorPresented, selected: $viewModel.style.fontName)
+    var body: some View {
+        VStack(spacing: 0) {
+            // Preview area - takes all available space
+            PreviewCarouselView(
+                isRendering: $viewModel.isRenderingInProgress,
+                previewViewModels: viewModel.previewViewModels
+            )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onTapGesture {
+                // Dismiss panel when tapping preview
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                    activePanel = .none
+                }
+            }
+
+            // Style toolbar with expandable panels
+            StyleToolbar(viewModel: viewModel, activePanel: $activePanel)
+
+            // Preview button
+            PrimaryButton(title: "Preview") {
+                viewModel.shouldNavigateToPreview = true
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 8)
+        }
+        .background(Color(UIColor.systemBackground))
+        .sheet(isPresented: $viewModel.isFontPickerActive) {
+            FontPickerView(selectedFont: $viewModel.style.fontName)
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+        }
+        .sheet(isPresented: $viewModel.isStylePickerActive) {
+            StyleBrowserView(styles: Style.defaultStyles, text: viewModel.text, onStyleSelected: { style in
+                viewModel.style = style
+                viewModel.registerBindings()
+                viewModel.requestPreviewRender()
+            })
+        }
+        .toast(isPresenting: $viewModel.isToastingCompletion, alert: {
+            AlertToast(displayMode: .alert, type: .complete(Theme.shared.colors.primaryText), title: "Saved to Camera Roll")
+        })
+        .navigationBarTitle("")
+        .navigationBarTitleDisplayMode(.inline)
     }
-    .navigationTitle($title)
-    .fontPicker(isPresented: $viewModel.isFontPickerActive, selected: $viewModel.style.fontName)
-    .toast(isPresenting: $viewModel.isToastingCompletion, alert: {
-      AlertToast(displayMode: .alert, type: .complete(Theme.shared.colors.primaryText), title: "Saved to Camera Roll")
-    })
-  }
 }
-

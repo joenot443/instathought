@@ -38,5 +38,7 @@
 		<string>Lora-VariableFont_wght.ttf</string>
 		<string>SourceSerif4-Regular.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict/>
 </dict>
 </plist>

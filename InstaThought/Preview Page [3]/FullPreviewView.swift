@@ -35,11 +35,11 @@ struct FullPreviewView: View {
             }) {
               Text("Save")
                 .frame(maxWidth: .infinity)
-                .fontWeight(.bold)
                 .padding()
-                .foregroundColor(viewModel.previewViewModels.first!.image.shouldUseWhiteText ? .white : .black)
+                .foregroundColor(viewModel.previewViewModels.first!.image.shouldUseWhiteText ? .white : Theme.shared.colors.accentText.opacity(0.8))
                 .background(Color.white.opacity(0.2))
                 .cornerRadius(8)
+                .overlay(RoundedRectangle.init(cornerRadius: 8.0).fill(.clear).stroke(viewModel.previewViewModels.first!.image.shouldUseWhiteText ? .white.opacity(0.5) : Theme.shared.colors.accentText.opacity(0.5), style: .init(lineWidth: 1.0)))
                 .padding(.horizontal)
             }
           }

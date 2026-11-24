@@ -21,9 +21,11 @@ class RenderViewModel {
 class RenderView: UIView {
   var textView: UITextView
   var viewModel: RenderViewModel
+  let onTap: () -> Void
   
-  init(frame: CGRect, viewModel: RenderViewModel) {
+  init(frame: CGRect, viewModel: RenderViewModel, onTap: @escaping () -> Void) {
     self.viewModel = viewModel
+    self.onTap = onTap
     self.textView = UITextView(usingTextLayoutManager: false)
     super.init(frame: frame)
     updateTextView()
@@ -65,6 +67,10 @@ class RenderView: UIView {
     textView.attributedText = attributedText
     
     backgroundColor = UIColor(viewModel.style.backgroundColor)
+
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+    textView.addGestureRecognizer(tapGesture)
+
     addSubview(textView)
     
     // Switch on style.shape
@@ -73,15 +79,15 @@ class RenderView: UIView {
       NSLayoutConstraint.activate([
         textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: viewModel.style.padding),
         textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -viewModel.style.padding),
-        textView.topAnchor.constraint(equalTo: topAnchor, constant:  viewModel.style.padding),
-        textView.bottomAnchor.constraint(equalTo: bottomAnchor, constant:  -viewModel.style.padding)
+        textView.topAnchor.constraint(equalTo: topAnchor, constant: viewModel.style.verticalPadding),
+        textView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -viewModel.style.verticalPadding)
       ])
     case .insta:
       NSLayoutConstraint.activate([
         textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: viewModel.style.padding),
         textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -viewModel.style.padding),
-        textView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 36.0),
-        textView.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -16.0)
+        textView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: viewModel.style.verticalPadding + 36.0),
+        textView.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -viewModel.style.verticalPadding)
       ])
       
     case .square:
@@ -95,6 +101,10 @@ class RenderView: UIView {
     
     // Apply padding from the style
     
+  }
+  
+  @objc func handleTap() {
+    onTap()
   }
   
   func visibleTextRange() -> NSRange? {
@@ -116,10 +126,11 @@ class RenderView: UIView {
 struct RenderViewWrapper: UIViewRepresentable {
   var text: String
   var style: Style
+  let onTap: () -> Void
   
   func makeUIView(context: Context) -> RenderView {
     let viewModel = RenderViewModel(text: text, style: style)
-    return RenderView(frame: .zero, viewModel: viewModel)
+    return RenderView(frame: .zero, viewModel: viewModel, onTap: onTap)
   }
   
   func updateUIView(_ uiView: RenderView, context: Context) {

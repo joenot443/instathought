@@ -10,16 +10,36 @@ import AlertToast
 import FontPicker
 import Combine
 
-// App entry point
 @main
 struct InstaThoughtApp: App {
   @StateObject private var theme: Theme = Theme.shared
+  @State private var opacity: Double = 0.0
+  @State private var showSplash: Bool = false
   
   var body: some Scene {
     WindowGroup {
-      InstaThoughtView(viewModel: InstaThoughtViewModel(text: "", style: .defaultStyle))
-        .environmentObject(theme)
+      ZStack {
+        InstaThoughtView(viewModel: InstaThoughtViewModel(text: "", style: .defaultStyle))
+          .environmentObject(theme)
+      }
     }
+  }
+}
+
+struct InstaThoughtView: View {
+  @StateObject var viewModel: InstaThoughtViewModel
+
+  var body: some View {
+    NavigationStack {
+      TextEditorPage(viewModel: viewModel)
+        .navigationDestination(isPresented: $viewModel.shouldNavigateToStyle) {
+          StyleAndPreviewPage(viewModel: viewModel)
+        }
+        .navigationDestination(isPresented: $viewModel.shouldNavigateToPreview) {
+          FullPreviewView(viewModel: viewModel)
+            .tint(viewModel.previewViewModels.first?.image.shouldUseWhiteText == true ? .white : Theme.shared.colors.accentText)
+        }
+    }.tint(Theme.shared.colors.accentText)
   }
 }
 

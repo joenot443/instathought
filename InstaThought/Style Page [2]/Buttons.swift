@@ -1,33 +1,44 @@
 import SwiftUI
 
+fileprivate let ButtonHeight = 36.0
+
 struct ActionButton: View {
   let icon: Image
   let label: String
+  let spacers: Bool
   let action: () -> Void
   
-  init(icon: Image, label: String, action: @escaping () -> Void) {
+  private let ButtonHeight = 36.0
+  
+  init(icon: Image, label: String, spacers: Bool = true, action: @escaping () -> Void) {
     self.icon = icon
     self.label = label
     self.action = action
+    self.spacers = spacers
   }
   
-  init(icon: String, label: String, action: @escaping () -> Void) {
+  init(icon: String, label: String, spacers: Bool = true, action: @escaping () -> Void) {
     self.icon = Image(systemName: icon)
     self.label = label
     self.action = action
+    self.spacers = spacers
   }
   
   @State private var buttonScale: CGFloat = 1.0
   
   var body: some View {
       HStack {
-        Spacer()
+        if spacers {  
+          Spacer()
+        }
         icon.foregroundStyle(Theme.shared.colors.accentText)
         Text(label).foregroundStyle(Theme.shared.colors.accentText)
-        Spacer()
+        if spacers {
+          Spacer()
+        }
     	}
-    .frame(maxHeight: 24)
     .padding(8)
+    .frame(maxHeight: ButtonHeight)
     .background(Theme.shared.colors.accentBackground)
     .foregroundStyle(Theme.shared.colors.accentText)
     .cornerRadius(6)
@@ -56,8 +67,8 @@ struct IconButton: View {
     Button(action: action) {
       icon.renderingMode(.template).resizable().aspectRatio(contentMode: .fit).foregroundStyle(color)
     }
-    .frame(maxHeight: 24)
-    .padding(8)
+    .padding(8.0)
+    .frame(maxHeight: ButtonHeight)
     .background(Theme.shared.colors.accentBackground)
     .overlay {
       RoundedRectangle(cornerRadius: 4.0).fill(.clear).stroke(Theme.shared.colors.accent, style: .init(lineWidth: 1.0))
@@ -76,33 +87,32 @@ struct IconButton: View {
 struct PrimaryButton: View {
     let title: String
     let action: () -> Void
-    
+
     @State private var buttonScale: CGFloat = 1.0
-    
+
     var body: some View {
-          HStack {
-                Spacer()
-              	Text(title).font(.headline).foregroundStyle(Theme.shared.colors.accentText)
-                Spacer()
-          }
-        .frame(maxHeight: 24)
-        .padding(10.0)
+        HStack {
+            Spacer()
+            Text(title)
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundStyle(Theme.shared.colors.primaryButtonText)
+            Spacer()
+        }
+        .padding(.vertical, 14)
+        .padding(.horizontal, 16)
         .background(Theme.shared.colors.accent)
-        .cornerRadius(6)
-        .overlay {
-          RoundedRectangle(cornerRadius: 8.0).fill(.clear).stroke(Theme.shared.colors.accent, style: .init(lineWidth: 1.0))
-        }
+        .cornerRadius(12)
+        .shadow(color: Theme.shared.colors.accent.opacity(0.3), radius: 8, y: 4)
         .scaleEffect(buttonScale)
-        .animation(.spring(response: 0.2, dampingFraction: 0.4), value: buttonScale)
+        .animation(.spring(response: 0.2, dampingFraction: 0.6), value: buttonScale)
         .pressEvents {
-            withAnimation { buttonScale = 0.9 }
+            withAnimation { buttonScale = 0.96 }
         } onRelease: {
-          withAnimation {
-            buttonScale = 1.0
-            action()
-          }
+            withAnimation {
+                buttonScale = 1.0
+                action()
+            }
         }
-        .padding(.horizontal)
     }
 }
 
@@ -144,3 +154,11 @@ struct PrimaryButton: View {
     ).padding()
 }
 
+//#Preview("Everything") {
+//  HStack {
+//    ActionButton(icon: "plus", label: "Add Item", action: {})
+//    IconButton(icon: Image(systemName: "text.bubble"), color: Theme.shared.colors.red, action: {})
+//    PrimaryButton(title: "Click Me", action: {})
+//    AdjusterView(icon: "textformat.size", value: .constant(CGFloat(16)), mode: .continuous(range: 8...32))
+//  }
+//}

@@ -27,26 +27,30 @@ struct ThemeColors {
   let secondaryBackground: Color
   let tertiaryBackground: Color
   let accent: Color
+  let accentMedium: Color  // A more saturated blue for icons and highlights
   var accentBackground: Color {
     accent.opacity(0.2)
   }
   var accentSecondaryBackground: Color {
     accent.opacity(0.1)
   }
-  
 
   var accentStroke: Color {
     accentText.opacity(0.3)
   }
   let accentText: Color
-  
+
+  var primaryButtonText: Color {
+    UITraitCollection.current.userInterfaceStyle == .dark ? primaryText : accentText
+  }
+
   let red: Color
   let yellow: Color
-  
+
   static var current: ThemeColors {
     UITraitCollection.current.userInterfaceStyle == .dark ? dark : light
   }
-  
+
   static let light = ThemeColors(
     primaryText: Color(hex: "000000"),
     secondaryText: Color(hex: "666666"),
@@ -54,12 +58,13 @@ struct ThemeColors {
     primaryBackground: Color(hex: "FFFFFF"),
     secondaryBackground: Color(hex: "F5F5F5"),
     tertiaryBackground: Color(hex: "EEEEEE"),
-    accent: Color(red: 0.7961, green: 0.949, blue: 0.9961),
-    accentText: Color(red: 0.1961, green: 0.3333, blue: 0.3765).opacity(0.7),
+    accent: Color(hex: "CAF3FF"),
+    accentMedium: Color(hex: "5ABCD8"),
+    accentText: Color(hex: "32555F").opacity(0.7),
     red: Color(hex: "#fed7cb"),
-    yellow: .black
+    yellow: Color(hex: "#fef0cb")
   )
-  
+
   static let dark = ThemeColors(
     primaryText: Color(hex: "FFFFFF"),
     secondaryText: Color(hex: "CCCCCC"),
@@ -67,8 +72,9 @@ struct ThemeColors {
     primaryBackground: Color(hex: "000000"),
     secondaryBackground: Color(hex: "1C1C1E"),
     tertiaryBackground: Color(hex: "2C2C2E"),
-    accent: Color(red: 0.1961, green: 0.3333, blue: 0.3765),
-    accentText: Color(red: 0.1961, green: 0.3333, blue: 0.3765),
+    accent: Color(hex: "#48798a"),
+    accentMedium: Color(hex: "6ABED8"),
+    accentText: Color(hex: "#48798a"),
     red: Color(hex: "#fecbd9"),
     yellow: Color(hex: "#fef0cb")
   )

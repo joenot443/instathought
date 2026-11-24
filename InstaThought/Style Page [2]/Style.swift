@@ -10,22 +10,31 @@ import SwiftUI
 import Combine
 
 class Style: ObservableObject {
-  
   @Published var foregroundColor: Color
   @Published var backgroundColor: Color
   @Published var fontSize: CGFloat
   @Published var padding: CGFloat
+  @Published var verticalPadding: CGFloat
   @Published var lineHeight: CGFloat
   @Published var fontName: String
   @Published var shape: Shape
   @Published var textAlignment: TextAlignmentOption
   
-  func scaledTo(scale: CGFloat) -> Style {
+  func newCopy() -> Style {
+    Style(foregroundColor: self.foregroundColor, backgroundColor: self.backgroundColor, fontSize: 18.0, padding: 24, verticalPadding: 24, lineHeight: 1.2, fontName: self.fontName, shape: .fullscreen, textAlignment: .left)
+  }
+  
+  var browserStyle: Style {
+    Style(foregroundColor: self.foregroundColor, backgroundColor: self.backgroundColor, fontSize: 18.0, padding: 4.0, verticalPadding: 4.0, lineHeight: 1.0, fontName: self.fontName, shape: .fullscreen, textAlignment: .justified)
+  }
+  
+  func scaledTo(scale: CGFloat, padding: CGFloat? = nil) -> Style {
     Style(
       foregroundColor: self.foregroundColor,
       backgroundColor: self.backgroundColor,
       fontSize: self.fontSize * scale,
-      padding: self.padding * scale,
+      padding: padding ?? self.padding * scale,
+      verticalPadding: self.verticalPadding * scale,
       lineHeight: self.lineHeight * scale,
       fontName: self.fontName,
       shape: self.shape,
@@ -35,11 +44,12 @@ class Style: ObservableObject {
   
   private var cancellables: Set<AnyCancellable> = []
   
-  init(foregroundColor: Color, backgroundColor: Color, fontSize: CGFloat, padding: CGFloat = 8, lineHeight: CGFloat = 1.2, fontName: String = "Helvetica", shape: Shape = .insta, textAlignment: TextAlignmentOption = .left) {
+  init(foregroundColor: Color, backgroundColor: Color, fontSize: CGFloat, padding: CGFloat = 24, verticalPadding: CGFloat = 24, lineHeight: CGFloat = 1.2, fontName: String = "Helvetica", shape: Shape = .insta, textAlignment: TextAlignmentOption = .left) {
     self.foregroundColor = foregroundColor
     self.backgroundColor = backgroundColor
     self.fontSize = fontSize
     self.padding = padding
+    self.verticalPadding = verticalPadding
     self.lineHeight = lineHeight
     self.fontName = fontName
     self.shape = shape
@@ -47,7 +57,7 @@ class Style: ObservableObject {
   }
 }
 
-enum Shape {
+enum Shape: CaseIterable {
   case insta, square, fullscreen
   
   mutating func advance() {
@@ -71,9 +81,20 @@ enum Shape {
       return "square.fill"
     }
   }
+
+  func name() -> String {
+    switch self {
+    case .fullscreen:
+      return "Fullscreen"
+    case .insta:
+      return "Insta"
+    case .square:
+      return "Square"
+    }
+  }
 }
 
-enum TextAlignmentOption {
+enum TextAlignmentOption: CaseIterable {
   case left, center, right, justified
   
   mutating func advance() {
@@ -132,11 +153,12 @@ enum TextAlignmentOption {
 extension Style {
   static var defaultStyle: Style = .init(foregroundColor:  Theme.shared.colors.secondaryText, backgroundColor: Theme.shared.colors.primaryBackground, fontSize: 24.0)
   
-  static var templateStyle: Style = .init(foregroundColor:  UITraitCollection.current.userInterfaceStyle == .dark ? .white.opacity(0.6) : .black.opacity(0.5), backgroundColor: .clear, fontSize: 16.0, shape: .fullscreen)
+  static var templateStyle: Style { .init(foregroundColor:  UITraitCollection.current.userInterfaceStyle == .dark ? .white.opacity(0.6) : .black.opacity(0.5), backgroundColor: .clear, fontSize: 14.0, padding: 8.0, shape: .fullscreen)
+  }
   
-  static let defaultPaddings: [CGFloat] = [0, 8, 16, 24, 32, 48, 64, 82]
+  static let defaultPaddings: [CGFloat] = [0, 4, 8, 16, 20, 24, 28,  32, 48, 64, 82, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464]
   
-  static let defaultLineHeights: [CGFloat] = [1.0, 1.2, 1.5, 2.0, 2.5, 3.5]
+  static let defaultLineHeights: [CGFloat] = [1.0, 1.2, 1.5, 2.0, 2.5, 3.5, 4.0, 5.0]
   
   static let defaultStyles: [Style] = [
     Style(foregroundColor: Color(r: 240, g: 214, b: 187), backgroundColor: Color(r: 53, g: 53, b: 53), fontSize: 28.0, fontName: "SourceSans3-Roman_Regular"),
@@ -175,7 +197,6 @@ extension Style {
     Style(foregroundColor: Color(r: 245, g: 255, b: 254), backgroundColor: Color(r: 73, g: 192, b: 212), fontSize: 28.0, fontName: "PontanoSans-Regular"),
     Style(foregroundColor: Color(r: 248, g: 214, b: 184), backgroundColor: Color(r: 119, g: 56, b: 25), fontSize: 28.0, fontName: "Andika"),
     Style(foregroundColor: Color(r: 249, g: 250, b: 251), backgroundColor: Color(r: 46, g: 46, b: 50), fontSize: 28.0, fontName: "CrimsonText-Regular"),
-    Style(foregroundColor: Color(r: 249, g: 250, b: 251), backgroundColor: Color(r: 254, g: 98, b: 57), fontSize: 28.0, fontName: "Mulish-Regular"),
     Style(foregroundColor: Color(r: 240, g: 228, b: 216), backgroundColor: Color(r: 45, g: 45, b: 43), fontSize: 28.0, fontName: "SourceSerif4-Regular"),
     Style(foregroundColor: Color(r: 255, g: 255, b: 255), backgroundColor: Color(r: 176, g: 168, b: 157), fontSize: 28.0, fontName: "Cantarell-Regular"),
     Style(foregroundColor: Color(r: 230, g: 230, b: 231), backgroundColor: Color(r: 88, g: 74, b: 68), fontSize: 28.0, fontName: "OpenSans-Regular"),
@@ -185,7 +206,6 @@ extension Style {
     Style(foregroundColor: Color(r: 234, g: 236, b: 248), backgroundColor: Color(r: 205, g: 180, b: 150), fontSize: 28.0, fontName: "Cabin-Regular"),
     Style(foregroundColor: Color(r: 255, g: 255, b: 255), backgroundColor: Color(r: 179, g: 180, b: 184), fontSize: 28.0, fontName: "Cabin-Regular"),
     Style(foregroundColor: Color(r: 249, g: 249, b: 249), backgroundColor: Color(r: 45, g: 45, b: 43), fontSize: 28.0, fontName: "OpenSans-Regular"),
-    Style(foregroundColor: Color(r: 179, g: 180, b: 184), backgroundColor: Color(r: 128, g: 132, b: 141), fontSize: 28.0, fontName: "Lora-Medium")
   ]
 }
 

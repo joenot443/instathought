@@ -15,18 +15,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_1024" translatesAutoresizingMaskIntoConstraints="NO" id="Qb6-wI-OQ0">
-                                <rect key="frame" x="76" y="250" width="240" height="240"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_1024" translatesAutoresizingMaskIntoConstraints="NO" id="Qb6-wI-OQ0">
+                                <rect key="frame" x="26.333333333333343" y="268.33333333333326" width="340.66666666666663" height="340.66666666666674"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Qb6-wI-OQ0" secondAttribute="height" multiplier="1:1" id="Pef-39-woc"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="0.79607843137254897" green="0.94901960784313721" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Qb6-wI-OQ0" firstAttribute="centerX" secondItem="Bcu-3y-fUS" secondAttribute="centerX" id="WSy-nz-Yib"/>
+                            <constraint firstItem="Qb6-wI-OQ0" firstAttribute="centerY" secondItem="Bcu-3y-fUS" secondAttribute="centerY" id="bM6-re-iOv"/>
+                            <constraint firstItem="Qb6-wI-OQ0" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.866836" id="gAG-ee-cmB"/>
+                        </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
+            <point key="canvasLocation" x="608" y="825"/>
         </scene>
     </scenes>
     <resources>

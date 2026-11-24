@@ -7,13 +7,23 @@ enum AdjusterMode {
 
 struct AdjusterView: View {
   let icon: String
-  let iconColor: Color
   @Binding var value: CGFloat
   let mode: AdjusterMode
+  let rotation: Double
   
-  @State private var scale: CGFloat = 1.0
-  @State private var minusButtonScale: CGFloat = 1.0
-  @State private var plusButtonScale: CGFloat = 1.0
+  init(icon: String, value: Binding<CGFloat>, mode: AdjusterMode, rotation: Double = 0.0, scale: CGFloat = 1.0, minusButtonScale: CGFloat = 1.0, plusButtonScale: CGFloat = 1.0) {
+    self.icon = icon
+    self._value = value
+    self.mode = mode
+    self.rotation = rotation
+    self.scale = scale
+    self.minusButtonScale = minusButtonScale
+    self.plusButtonScale = plusButtonScale
+  }
+  
+  @State private var scale: CGFloat
+  @State private var minusButtonScale: CGFloat
+  @State private var plusButtonScale: CGFloat
   
   private let ButtonSize = 36.0
   
@@ -24,7 +34,7 @@ struct AdjusterView: View {
       } label: {
         Image(systemName: "minus")
           .renderingMode(.template)
-          .foregroundStyle(Theme.shared.colors.accentText)
+          .foregroundStyle(Theme.shared.colors.primaryButtonText)
           .frame(height: ButtonSize)
       }
       .frame(width: ButtonSize, height: ButtonSize)
@@ -46,13 +56,16 @@ struct AdjusterView: View {
           .resizable()
           .aspectRatio(contentMode: .fit)
           .font(.title2)
+          .rotationEffect(.degrees(rotation))
           .foregroundStyle(Theme.shared.colors.accentText.opacity(0.7))
           .scaleEffect(scale)
           .animation(.spring(response: 0.2, dampingFraction: 0.6), value: scale)
           .padding(.top, 4.0)
         Spacer(minLength: 0.0)
-        Text(String(value.description.split(separator: ".").first ?? ""))
-          .font(.system(size: 10.0, weight: .bold))
+        Text(value.truncatingRemainder(dividingBy: 1) == 0
+             ? String(format: "%.0f", value)
+             : String(format: "%.1f", value))
+        	.font(.system(size: 10.0, weight: .bold))
           .lineLimit(1)
           .foregroundStyle(Theme.shared.colors.accentText)
           .animation(.spring(response: 0.3, dampingFraction: 0.5), value: value.description)
@@ -65,7 +78,7 @@ struct AdjusterView: View {
       } label: {
         Image(systemName: "plus")
           .renderingMode(.template)
-          .foregroundStyle(Theme.shared.colors.accentText)
+          .foregroundStyle(Theme.shared.colors.primaryButtonText)
       }
       .background(Theme.shared.colors.accent)
       .frame(width: ButtonSize, height: ButtonSize)
@@ -82,8 +95,11 @@ struct AdjusterView: View {
         withAnimation { plusButtonScale = 1.0 }
       }
     }
+    .padding(0)
     .frame(height: ButtonSize)
     .background(Theme.shared.colors.accentBackground)
+    .clipShape(RoundedRectangle(cornerRadius: 8))
+
   }
   
   private func decrementValue() {
@@ -135,14 +151,16 @@ extension View {
     )
   }
 }
-
-#Preview("Continuous Adjuster") {
-  AdjusterView(
-    icon: "textformat.size",
-    iconColor: .blue,
-    value: .constant(CGFloat(16)),
-    mode: .continuous(range: 8...32)
-  )
-  .padding()
-}
+//
+//#Preview("Continuous Adjuster") {
+//  HStack {
+//    AdjusterView(
+//      icon: "textformat.size",
+//      value: 16.0,
+//      mode: .continuous(range: 8...32)
+//    )
+//    .padding()
+//    PrimaryButton(title: "Continue", action: {})
+//  }
+//}
 
