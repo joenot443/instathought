@@ -6,63 +6,74 @@
 //
 
 import SwiftUI
-import AlertToast
 import Combine
 
 struct TextEditorPage: View {
   @ObservedObject var viewModel: InstaThoughtViewModel
-  @FocusState private var isEditorFocused: Bool
-  
+  @State private var isKeyboardVisible = false
+
   var body: some View {
     VStack(spacing: 0) {
-      TextEditorView(text: $viewModel.text) {}
-        .focused($isEditorFocused)
-        .onChange(of: isEditorFocused) { newValue, _ in
-          if newValue {
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
-              viewModel.isTemplatePickerActive = false
-            }
+      HStack {
+        CloudWordmark()
+        Spacer()
+        if isKeyboardVisible {
+          Button("Done") {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
           }
+          .buttonStyle(CloudChipStyle())
+        } else {
+          Button {
+            Cloud.tap()
+            viewModel.isTemplatePickerActive = true
+          } label: {
+            Label("Ideas", systemImage: "lightbulb")
+          }
+          .buttonStyle(CloudChipStyle())
         }
-        .onTapGesture {
-          viewModel.isTemplatePickerActive = false
-          isEditorFocused = true
+      }
+      .cloudBar()
+
+      TextEditorView(text: $viewModel.text, pageCount: viewModel.previewViewModels.count)
+        .padding(.horizontal, 20)
+        .padding(.top, 10)
+
+      // The bubble's trail leads down to the next step.
+      ZStack(alignment: .topLeading) {
+        if !isKeyboardVisible {
+          Circle().fill(Cloud.white).overlay(Circle().strokeBorder(Cloud.night, lineWidth: 3))
+            .frame(width: 30, height: 30)
+            .offset(x: 24, y: 12)
+          Circle().fill(Cloud.white).overlay(Circle().strokeBorder(Cloud.night, lineWidth: 3))
+            .frame(width: 17, height: 17)
+            .offset(x: 52, y: 48)
         }
-
-      Spacer()
-
-      if !viewModel.text.isEmpty {
-        PrimaryButton(title: "Continue") {
-          let impact = UIImpactFeedbackGenerator(style: .medium)
-          impact.impactOccurred()
+        Button("Make it a page") {
+          Cloud.tap()
           viewModel.requestPreviewRender()
           viewModel.shouldNavigateToStyle = true
         }
-        .padding(.horizontal, 20)
-        .padding(.bottom, 8)
-        .transition(.move(edge: .bottom).combined(with: .opacity))
+        .buttonStyle(CloudButtonStyle())
+        .disabled(viewModel.text.isEmpty)
+        .padding(.leading, isKeyboardVisible ? 0 : 84)
+        .padding(.top, isKeyboardVisible ? 14 : 58)
+      }
+      .padding(.horizontal, 20)
+      .padding(.bottom, 12)
+      .animation(.snappy(duration: 0.25), value: isKeyboardVisible)
+    }
+    .background(Cloud.sky.ignoresSafeArea())
+    .toolbar(.hidden, for: .navigationBar)
+    .sheet(isPresented: $viewModel.isTemplatePickerActive) {
+      InspirationSheet { template in
+        viewModel.text = template.content
       }
     }
-    .animation(.spring(response: 0.3, dampingFraction: 0.8), value: viewModel.text.isEmpty)
-    .navigationTitle("Your Thoughts")
-    
-    // Template view
-    TemplateView(selectedText: $viewModel.text, viewModel: viewModel, onSelect: { template in
-      viewModel.text = template.content
-//      viewModel.style = Style.defaultStyles.randomElement()!.newCopy()
-    }, onHeaderTap: {
-      isEditorFocused = false
-    })
-//      .onChange(of: viewModel.text) { newValue, _ in
-//        if !newValue.isEmpty && !viewModel.isTemplatePickerActive {
-//          withAnimation(.spring()) {
-//            viewModel.isTemplatePickerActive = true
-//          }
-//        }
-//      }
-      .onAppear {
-        viewModel.isTemplatePickerActive = false
-      }
-      .animation(.spring(), value: viewModel.text.isEmpty)
+    .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+      isKeyboardVisible = true
+    }
+    .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+      isKeyboardVisible = false
+    }
   }
 }

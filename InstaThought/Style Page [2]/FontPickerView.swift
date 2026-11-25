@@ -61,6 +61,8 @@ struct FontPickerView: View {
                     }
                 }
                 .listStyle(.insetGrouped)
+                .scrollContentBackground(.hidden)
+                .background(Cloud.sky)
                 .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search fonts")
                 .navigationTitle("Font")
                 .navigationBarTitleDisplayMode(.inline)
@@ -111,7 +113,7 @@ struct FontRow: View {
                 if isSelected {
                     Image(systemName: "checkmark")
                         .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(Theme.shared.colors.accentMedium)
+                        .foregroundStyle(Cloud.night)
                 }
             }
             .contentShape(Rectangle())

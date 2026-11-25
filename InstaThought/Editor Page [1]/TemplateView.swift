@@ -10,120 +10,73 @@ import SwiftUI
 
 
 
-struct TemplateView: View {
-  @Binding var selectedText: String
-  @Environment(\.colorScheme) var colorScheme
-  @ObservedObject var viewModel: InstaThoughtViewModel
-
+/// "Need inspiration?": passages from the bundled books and poems to start from.
+struct InspirationSheet: View {
   let onSelect: (Template) -> Void
-  let onHeaderTap: () -> Void
+  @Environment(\.dismiss) private var dismiss
 
   var body: some View {
-    VStack(spacing: 0) {
-      // Header
-      Button(action: {
-        let impact = UIImpactFeedbackGenerator(style: .light)
-        impact.impactOccurred()
-        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
-          viewModel.isTemplatePickerActive.toggle()
-          onHeaderTap()
-        }
-      }) {
-        HStack {
-          Image(systemName: "lightbulb")
-            .font(.system(size: 14))
-            .foregroundStyle(Theme.shared.colors.accentMedium)
-          Text("Need inspiration?")
-            .foregroundStyle(.secondary)
-            .font(.subheadline)
-            .fontWeight(.medium)
-          Spacer()
-          Image(systemName: "chevron.down")
-            .font(.system(size: 12, weight: .semibold))
-            .foregroundStyle(.tertiary)
-            .rotationEffect(.degrees(viewModel.isTemplatePickerActive ? 0 : -90))
-        }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 12)
-        .contentShape(Rectangle())
+    VStack(alignment: .leading, spacing: 0) {
+      HStack {
+        Text("Need inspiration?")
+          .font(Cloud.font(28, .black))
+          .foregroundStyle(Cloud.night)
+        Spacer()
+        Button("Close") { dismiss() }
+          .buttonStyle(CloudChipStyle())
       }
-      .buttonStyle(.plain)
+      .padding(.horizontal, 20)
+      .padding(.top, 22)
+      .padding(.bottom, 14)
 
-      // Templates Grid
-      if viewModel.isTemplatePickerActive {
-        ScrollView(.vertical, showsIndicators: false) {
-          LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-            ForEach(Template.samples) { template in
-              TemplateCard(template: template) {
-                let impact = UIImpactFeedbackGenerator(style: .light)
-                impact.impactOccurred()
-                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
-                  viewModel.isTemplatePickerActive = false
-                  onHeaderTap()
-                  onSelect(template)
-                }
-              }
+      ScrollView(.vertical, showsIndicators: false) {
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)], spacing: 12) {
+          ForEach(Template.samples) { template in
+            TemplateCard(template: template) {
+              Cloud.tap()
+              onSelect(template)
+              dismiss()
             }
           }
-          .padding(.horizontal, 20)
-          .padding(.bottom, 16)
         }
-        .transition(.opacity.combined(with: .move(edge: .bottom)))
+        .padding(.horizontal, 20)
+        .padding(.bottom, 24)
       }
     }
-    .frame(maxWidth: .infinity)
-    .background(Color(UIColor.systemBackground))
-    .clipped()
-    .shadow(color: colorScheme == .dark ? .white.opacity(0.03) : .black.opacity(0.08),
-            radius: 8, y: -4)
-    .contentShape(Rectangle())
+    .background(Cloud.sky.ignoresSafeArea())
+    .presentationDragIndicator(.visible)
   }
 }
 
 struct TemplateCard: View {
   let template: Template
   let onSelect: () -> Void
-  @State private var isPressed = false
 
   var body: some View {
     Button(action: onSelect) {
-      VStack(alignment: .leading, spacing: 8) {
-        // Preview text
+      VStack(alignment: .leading, spacing: 10) {
         Text(template.content)
-          .font(.system(size: 13, weight: .regular))
-          .foregroundStyle(.primary.opacity(0.8))
-          .lineLimit(5)
+          .font(.custom("Lora-Regular", size: 14))
+          .lineSpacing(2)
+          .lineLimit(6)
           .multilineTextAlignment(.leading)
           .frame(maxWidth: .infinity, alignment: .leading)
 
         Spacer(minLength: 0)
 
-        // Title and author
-        if template.title != nil || template.author != nil {
-          VStack(alignment: .leading, spacing: 2) {
-            if let title = template.title {
-              Text(title)
-                .font(.system(size: 12, weight: .semibold))
-                .foregroundStyle(.primary)
-                .lineLimit(1)
-            }
-            if let author = template.author {
-              Text(author)
-                .font(.system(size: 11))
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
-            }
+        VStack(alignment: .leading, spacing: 1) {
+          if let title = template.title {
+            Text(title).font(Cloud.font(13, .black)).lineLimit(1)
+          }
+          if let author = template.author {
+            Text(author).font(Cloud.font(12, .semibold)).foregroundStyle(Cloud.quiet).lineLimit(1)
           }
         }
       }
-      .padding(12)
-      .frame(maxWidth: .infinity, minHeight: 140, alignment: .topLeading)
-      .background(Color(UIColor.secondarySystemBackground))
-      .cornerRadius(12)
-      .overlay(
-        RoundedRectangle(cornerRadius: 12)
-          .stroke(Color.primary.opacity(0.06), lineWidth: 1)
-      )
+      .foregroundStyle(Cloud.night)
+      .padding(14)
+      .frame(maxWidth: .infinity, minHeight: 178, alignment: .topLeading)
+      .cloudOutlined(radius: 26)
       .contentShape(Rectangle())
     }
     .buttonStyle(TemplateCardButtonStyle())

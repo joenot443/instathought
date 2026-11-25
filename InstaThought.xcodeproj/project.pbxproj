@@ -47,6 +47,7 @@
 		020C77402C921BFC008A47F5 /* SourceSans3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 020C773F2C921BFC008A47F5 /* SourceSans3.ttf */; };
 		027078872C89341E00273775 /* FullPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027078862C89341E00273775 /* FullPreviewView.swift */; };
 		027078892C894F9400273775 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027078882C894F9400273775 /* PhotoService.swift */; };
+		A1B2C3D40000000000000021 /* CloudTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40000000000000022 /* CloudTheme.swift */; };
 		A1B2C3D40000000000000011 /* ShareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40000000000000012 /* ShareService.swift */; };
 		A1B2C3D40000000000000013 /* DraftStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40000000000000014 /* DraftStore.swift */; };
 		A1B2C3D40000000000000015 /* ScreenshotScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40000000000000016 /* ScreenshotScene.swift */; };
@@ -119,6 +120,7 @@
 		020C773F2C921BFC008A47F5 /* SourceSans3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceSans3.ttf; sourceTree = "<group>"; };
 		027078862C89341E00273775 /* FullPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPreviewView.swift; sourceTree = "<group>"; };
 		027078882C894F9400273775 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		A1B2C3D40000000000000022 /* CloudTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudTheme.swift; sourceTree = "<group>"; };
 		A1B2C3D40000000000000012 /* ShareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareService.swift; sourceTree = "<group>"; };
 		A1B2C3D40000000000000014 /* DraftStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftStore.swift; sourceTree = "<group>"; };
 		A1B2C3D40000000000000016 /* ScreenshotScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotScene.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				020C76F42C91D8B7008A47F5 /* fonts */,
 				020C773A2C920D3E008A47F5 /* UIImage+Text.swift */,
 				027078882C894F9400273775 /* PhotoService.swift */,
+				A1B2C3D40000000000000022 /* CloudTheme.swift */,
 				A1B2C3D40000000000000012 /* ShareService.swift */,
 				A1B2C3D40000000000000014 /* DraftStore.swift */,
 				A1B2C3D40000000000000016 /* ScreenshotScene.swift */,
@@ -432,6 +435,7 @@
 				029F6BFE2C88EFC5007E7081 /* RenderService.swift in Sources */,
 				02B1FC572C8F5F6400BE8E40 /* Style.swift in Sources */,
 				027078892C894F9400273775 /* PhotoService.swift in Sources */,
+				A1B2C3D40000000000000021 /* CloudTheme.swift in Sources */,
 				A1B2C3D40000000000000011 /* ShareService.swift in Sources */,
 				A1B2C3D40000000000000013 /* DraftStore.swift in Sources */,
 				A1B2C3D40000000000000015 /* ScreenshotScene.swift in Sources */,

@@ -10,88 +10,81 @@ import SwiftUI
 struct ScrollableTextEditor: UIViewRepresentable {
   @Binding var text: String
   let font: UIFont
-  
+  var textColor: UIColor = .label
+  var tintColor: UIColor? = nil
+
   func makeCoordinator() -> Coordinator {
     Coordinator(self)
   }
-  
+
   func makeUIView(context: Context) -> UITextView {
     let textView = UITextView()
     textView.delegate = context.coordinator
     textView.font = font
+    textView.textColor = textColor
+    if let tintColor { textView.tintColor = tintColor }
     textView.backgroundColor = .clear
     return textView
   }
-  
+
   func updateUIView(_ uiView: UITextView, context: Context) {
     if uiView.text != text {
       uiView.text = text
       uiView.setContentOffset(.zero, animated: true)
     }
   }
-  
+
   class Coordinator: NSObject, UITextViewDelegate {
     var parent: ScrollableTextEditor
-    
+
     init(_ textEditor: ScrollableTextEditor) {
       self.parent = textEditor
     }
-    
+
     func textViewDidChange(_ textView: UITextView) {
       parent.text = textView.text
     }
   }
 }
 
+/// The writing area: a big outlined thought bubble.
 struct TextEditorView: View {
   @Binding var text: String
-  @FocusState private var isFocused: Bool
-  @Environment(\.colorScheme) private var colorScheme
-  let action: () -> Void
+  /// Number of rendered pages, shown in the corner once there is text.
+  let pageCount: Int
 
   var body: some View {
-    VStack(spacing: 0) {
-      ZStack(alignment: .topLeading) {
-        ScrollableTextEditor(text: $text, font: .init(name: "Lato-Regular", size: 22) ?? .systemFont(ofSize: 22))
-          .focused($isFocused)
-          .tint(Theme.shared.colors.accentMedium)
-          .foregroundStyle(Theme.shared.colors.primaryText)
-          .padding(.horizontal, 4)
-          .padding(.vertical, 8)
-          .contentMargins(8.0)
-
-        if text.isEmpty {
-          Text(verbatim: "What's on your mind?")
-            .font(.custom("Lato-Regular", size: 22))
-            .padding(.vertical, 16)
-            .padding(.horizontal, 12)
-            .foregroundStyle(Color.secondary.opacity(0.5))
-            .allowsHitTesting(false)
-        }
-      }
-      .padding(12)
-      .background(
-        RoundedRectangle(cornerRadius: 12)
-          .fill(Color(UIColor.secondarySystemBackground))
+    ZStack(alignment: .topLeading) {
+      ScrollableTextEditor(
+        text: $text,
+        font: Cloud.uiFont(22, .semibold),
+        textColor: UIColor(Cloud.night),
+        tintColor: UIColor(Cloud.night)
       )
-      .overlay(
-        RoundedRectangle(cornerRadius: 12)
-          .stroke(isFocused ? Theme.shared.colors.accentMedium.opacity(0.5) : Color.clear, lineWidth: 2)
-      )
-      .padding(.horizontal, 20)
-      .padding(.top, 8)
+      .padding(.horizontal, 16)
+      .padding(.top, 14)
+      .padding(.bottom, 34)
 
-      // Character count when typing
-      if !text.isEmpty {
-        HStack {
-          Spacer()
-          Text("\(text.count) characters")
-            .font(.caption)
-            .foregroundStyle(.tertiary)
-            .padding(.trailing, 24)
-            .padding(.top, 6)
-        }
+      if text.isEmpty {
+        Text(verbatim: "What's on your mind?")
+          .font(Cloud.font(22, .semibold))
+          .foregroundStyle(Cloud.placeholder)
+          .padding(.horizontal, 21)
+          .padding(.top, 21)
+          .allowsHitTesting(false)
+          .accessibilityHidden(true)
       }
     }
+    .overlay(alignment: .bottomTrailing) {
+      if !text.isEmpty, pageCount > 0 {
+        Text(pageCount == 1 ? "1 page" : "\(pageCount) pages")
+          .font(Cloud.font(14, .bold))
+          .foregroundStyle(Cloud.quiet)
+          .padding(.trailing, 24)
+          .padding(.bottom, 16)
+          .contentTransition(.numericText())
+      }
+    }
+    .cloudOutlined(radius: 46, lineWidth: 3)
   }
 }

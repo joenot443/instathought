@@ -26,7 +26,8 @@ enum ScreenshotScene: String, CaseIterable {
   }
 
   private static let sampleTitle = "Pride and Prejudice"
-  private static let sampleStyleIndex = 10
+  /// The lavender Poppins preset, which is also the default style for new thoughts.
+  private static let sampleStyleIndex = Style.defaultStyles.firstIndex { $0.fontName == "Poppins-Medium" } ?? 0
 
   @MainActor
   func apply(to viewModel: InstaThoughtViewModel) async {
@@ -56,14 +57,12 @@ enum ScreenshotScene: String, CaseIterable {
       viewModel.isStylePickerActive = true
     case .fontPicker:
       viewModel.isFontPickerActive = true
-    case .saved:
-      _ = await viewModel.saveToPhotos()
-    case .preview, .share, .photosDenied:
+    case .preview, .share, .saved, .photosDenied:
       viewModel.shouldNavigateToPreview = true
       await pause(0.8)
       if self == .share {
         ShareService.share(images: viewModel.previewViewModels.map { $0.image })
-      } else if self == .photosDenied {
+      } else if self == .photosDenied || self == .saved {
         _ = await viewModel.saveToPhotos()
       }
     default:

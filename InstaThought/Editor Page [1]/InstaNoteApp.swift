@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import AlertToast
-import FontPicker
 import Combine
 
 @main
@@ -32,11 +30,14 @@ struct InstaThoughtApp: App {
         } else {
           InstaThoughtView(viewModel: viewModel)
             .environmentObject(theme)
+            .preferredColorScheme(.light)
             .task { await ScreenshotScene.current?.apply(to: viewModel) }
         }
         #else
         InstaThoughtView(viewModel: viewModel)
           .environmentObject(theme)
+          // Cloud has no dark palette yet.
+          .preferredColorScheme(.light)
         #endif
       }
     }
@@ -59,9 +60,8 @@ struct InstaThoughtView: View {
         }
         .navigationDestination(isPresented: $viewModel.shouldNavigateToPreview) {
           FullPreviewView(viewModel: viewModel)
-            .tint(viewModel.previewViewModels.first?.image.shouldUseWhiteText == true ? .white : Theme.shared.colors.accentText)
         }
-    }.tint(Theme.shared.colors.accentText)
+    }.tint(Cloud.night)
   }
 }
 

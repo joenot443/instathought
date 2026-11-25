@@ -38,13 +38,24 @@ class InstaThoughtViewModel: ObservableObject {
     $text
       .dropFirst()
       .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
-      .sink { DraftStore.saveText($0) }
+      .sink { [weak self] text in
+        DraftStore.saveText(text)
+        // Keeps the editor's page count current while typing.
+        self?.requestPreviewRender()
+      }
       .store(in: &cancellables)
   }
 
   /// Starts from the thought and style the user left last time, if any.
   static func restored() -> InstaThoughtViewModel {
     InstaThoughtViewModel(text: DraftStore.loadText(), style: DraftStore.loadStyle() ?? .defaultStyle)
+  }
+
+  /// Switches to one of the bundled presets.
+  func apply(preset: Style) {
+    style = preset
+    registerBindings()
+    requestPreviewRender()
   }
 
   func saveDraft() {

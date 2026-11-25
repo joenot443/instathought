@@ -151,7 +151,8 @@ enum TextAlignmentOption: CaseIterable {
 }
 
 extension Style {
-  static var defaultStyle: Style = .init(foregroundColor:  Theme.shared.colors.secondaryText, backgroundColor: Theme.shared.colors.primaryBackground, fontSize: 24.0)
+  /// New thoughts start in the lavender preset, so the first page already looks finished.
+  static var defaultStyle: Style = .init(foregroundColor: Color(r: 37, g: 31, b: 84), backgroundColor: Color(r: 209, g: 200, b: 255), fontSize: 28.0, fontName: "Poppins-Medium")
   
   static var templateStyle: Style { .init(foregroundColor:  UITraitCollection.current.userInterfaceStyle == .dark ? .white.opacity(0.6) : .black.opacity(0.5), backgroundColor: .clear, fontSize: 14.0, padding: 8.0, shape: .fullscreen)
   }
