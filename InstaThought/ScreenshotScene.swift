@@ -11,6 +11,10 @@ import SwiftUI
 
 enum ScreenshotScene: String, CaseIterable {
   case editor, inspiration, editorText, style, styleBrowser, fontPicker, colorPicker, preview, share, saved, photosDenied
+  /// Opens Preview on one inspiration sample in its own style: `-screenshotScene sample -sample "Sonnet 18"`.
+  case sample
+  /// Renders every inspiration sample and writes its pages and a report to Documents/audit.
+  case sampleAudit
   /// One group of controls on its own, for before/after crops: `-screenshotScene controls -group chips`.
   case controls
 
@@ -56,6 +60,26 @@ enum ScreenshotScene: String, CaseIterable {
     }
 
     if self == .controls { return }
+    if self == .sampleAudit {
+      // Pages only draw once the app is on screen.
+      await pause(2)
+      Self.auditSamples()
+      return
+    }
+    if self == .sample {
+      let args = ProcessInfo.processInfo.arguments
+      let title = args.firstIndex(of: "-sample").flatMap { args.indices.contains($0 + 1) ? args[$0 + 1] : nil }
+      guard let template = Template.samples.first(where: { $0.title == title }) else { return }
+      viewModel.text = template.content
+      if let look = template.look { viewModel.apply(preset: look) }
+      viewModel.registerBindings()
+      viewModel.requestPreviewRender()
+      await pause(0.4)
+      viewModel.shouldNavigateToStyle = true
+      await pause(0.8)
+      viewModel.shouldNavigateToPreview = true
+      return
+    }
     viewModel.text = Self.sampleText
     viewModel.style = Style.defaultStyles[Self.sampleStyleIndex]
     viewModel.registerBindings()
@@ -84,6 +108,50 @@ enum ScreenshotScene: String, CaseIterable {
     default:
       break
     }
+  }
+
+  /// Every sample, rendered the way Preview renders it. For each one: the pages as PNGs, and in
+  /// report.json how many explicit page sections it has, how many pages they became, and each
+  /// page's length, so overflowing sections and stub last pages are easy to spot.
+  @MainActor
+  private static func auditSamples() {
+    let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("audit")
+    try? FileManager.default.removeItem(at: dir)
+    try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+    var report: [[String: Any]] = []
+    for (i, template) in Template.samples.sorted(by: { ($0.title ?? "") < ($1.title ?? "") }).enumerated() {
+      guard let look = template.look else {
+        report.append(["title": template.title ?? "", "error": "no style"])
+        continue
+      }
+      let pages = RenderService.renderPreviews(text: template.content, style: look)
+      for (p, page) in pages.enumerated() {
+        try? page.image.pngData()?.write(to: dir.appendingPathComponent(String(format: "%02d-%d.png", i, p + 1)))
+      }
+      report.append([
+        "index": i,
+        "title": template.title ?? "",
+        "font": look.fontName,
+        "sections": template.content.components(separatedBy: "\n@").count,
+        "pages": pages.count,
+        "pageLengths": pages.map { $0.text.count },
+        "lastPage": pages.last?.text ?? "",
+        // The widest line in points, to check verse against the narrowest current iPhone's text
+        // width: 390 points, less the page's side margins and the text view's own inset.
+        "widestLine": Self.widestLine(template.content, style: look),
+        "textWidth": 390 - 2 * look.padding - 10,
+      ])
+    }
+    let data = try? JSONSerialization.data(withJSONObject: report, options: [.prettyPrinted, .sortedKeys])
+    try? data?.write(to: dir.appendingPathComponent("report.json"))
+    print("AUDIT done: \(report.count) samples in \(dir.path)")
+  }
+
+  private static func widestLine(_ text: String, style: Style) -> Double {
+    guard let font = UIFont(name: style.fontName, size: style.fontSize) else { return 0 }
+    return text.replacingOccurrences(of: "\n@", with: "\n").components(separatedBy: "\n")
+      .map { Double(($0 as NSString).size(withAttributes: [.font: font]).width) }
+      .max() ?? 0
   }
 
   private func pause(_ seconds: Double) async {

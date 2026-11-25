@@ -2,102 +2,392 @@
   {
     "author": "William Shakespeare",
     "title": "Romeo and Juliet",
-    "content": "But soft! what light through yonder window breaks?\nIt is the east, and Juliet is the sun.\nArise, fair sun, and kill the envious moon,\nWho is already sick and pale with grief\nThat thou her maid art far more fair than she.\nBe not her maid since she is envious.\nHer vestal livery is but sick and green\nAnd none but fools do wear it; cast it off.\nIt is my lady; O, it is my love!\nO, that she knew she were!\nShe speaks yet she says nothing: what of that?\nHer eye discourses; I will answer it.\nI am too bold; 'tis not to me she speaks:\nTwo of the fairest stars in all the heaven,\nHaving some business, do entreat her eyes\nTo twinkle in their spheres till they return.\nWhat if her eyes were there, they in her head?\nThe brightness of her cheek would shame those stars\nAs daylight doth a lamp; her eyes in heaven\nWould through the airy region stream so bright\nThat birds would sing and think it were not night.\n\nO Romeo, Romeo! wherefore art thou Romeo?\nDeny thy father and refuse thy name;\nOr, if thou wilt not, be but sworn my love,\nAnd I'll no longer be a Capulet.\n'Tis but thy name that is my enemy.\nThou art thyself, though not a Montague.\nWhat's Montague? it is nor hand nor foot,\nNor arm nor face nor any other part\nBelonging to a man. O, be some other name!\nWhat's in a name? that which we call a rose\nBy any other name would smell as sweet.\nSo Romeo would, were he not Romeo call'd,\nRetain that dear perfection which he owes\nWithout that title. Romeo, doff thy name;\nAnd for thy name, which is no part of thee,\nTake all myself.\n\nI take thee at thy word.\nCall me but love, and I'll be new baptized;\nHenceforth I never will be Romeo."
+    "content": "But soft! what light through yonder window breaks?\nIt is the east, and Juliet is the sun.\nArise, fair sun, and kill the envious moon,\nWho is already sick and pale with grief\nThat thou her maid art far more fair than she.\nBe not her maid since she is envious.\nHer vestal livery is but sick and green\nAnd none but fools do wear it; cast it off.\nIt is my lady; O, it is my love!\nO, that she knew she were!\nShe speaks yet she says nothing: what of that?\nHer eye discourses; I will answer it.\nI am too bold; 'tis not to me she speaks:\nTwo of the fairest stars in all the heaven,\nHaving some business, do entreat her eyes\nTo twinkle in their spheres till they return.\nWhat if her eyes were there, they in her head?\nThe brightness of her cheek would shame those stars\nAs daylight doth a lamp; her eyes in heaven\nWould through the airy region stream so bright\nThat birds would sing and think it were not night.\n@\nO Romeo, Romeo! wherefore art thou Romeo?\nDeny thy father and refuse thy name;\nOr, if thou wilt not, be but sworn my love,\nAnd I'll no longer be a Capulet.\n'Tis but thy name that is my enemy.\nThou art thyself, though not a Montague.\nWhat's Montague? it is nor hand nor foot,\nNor arm nor face nor any other part\nBelonging to a man. O, be some other name!\nWhat's in a name? that which we call a rose\nBy any other name would smell as sweet.\nSo Romeo would, were he not Romeo call'd,\nRetain that dear perfection which he owes\nWithout that title. Romeo, doff thy name;\nAnd for thy name, which is no part of thee,\nTake all myself.\n\nI take thee at thy word.\nCall me but love, and I'll be new baptized;\nHenceforth I never will be Romeo.",
+    "style": {
+      "preset": 7,
+      "lineHeight": 1.2,
+      "size": 16
+    }
   },
   {
     "author": "John Milton",
     "title": "Paradise Lost",
-    "content": "Of Man’s first disobedience, and the fruit\nOf that forbidden tree whose mortal taste\nBrought death into the World, and all our woe,\nWith loss of Eden, till one greater Man\nRestore us, and regain the blissful seat,\nSing, Heavenly Muse, that on the secret top\nOf Oreb, or of Sinai, didst inspire\nThat shepherd who first taught the chosen seed\nIn the beginning how the heavens and earth\nRose out of Chaos: or if Sion hill\nDelight thee more, and Siloa’s brook that flow’d\nFast by the oracle of God, I thence\nInvoke thy aid to my advent’rous song,\nThat with no middle flight intends to soar\nAbove th’ Aonian mount, while it pursues\nThings unattempted yet in prose or rhyme.\n\nAnd chiefly thou, O Spirit, that dost prefer\nBefore all temples th’ upright heart and pure,\nInstruct me, for thou know’st; thou from the first\nWast present, and with mighty wings outspread\nDove-like satst brooding on the vast Abyss\nAnd mad’st it pregnant: what in me is dark\nIllumine, what is low raise and support;\nThat to the highth of this great argument\nI may assert th’ Eternal Providence,\nAnd justify the ways of God to men.  \nSay first, for Heaven hides nothing from thy view\nNor the deep tract of Hell, say first what cause\nMoved our grand parents in that happy state,\nFavored of Heaven so highly, to fall off."
+    "content": "Of Man’s first disobedience, and the fruit\nOf that forbidden tree whose mortal taste\nBrought death into the World, and all our woe,\nWith loss of Eden, till one greater Man\nRestore us, and regain the blissful seat,\nSing, Heavenly Muse, that on the secret top\nOf Oreb, or of Sinai, didst inspire\nThat shepherd who first taught the chosen seed\nIn the beginning how the heavens and earth\nRose out of Chaos: or if Sion hill\nDelight thee more, and Siloa’s brook that flow’d\nFast by the oracle of God, I thence\nInvoke thy aid to my advent’rous song,\nThat with no middle flight intends to soar\nAbove th’ Aonian mount, while it pursues\nThings unattempted yet in prose or rhyme.\n@\nAnd chiefly thou, O Spirit, that dost prefer\nBefore all temples th’ upright heart and pure,\nInstruct me, for thou know’st; thou from the first\nWast present, and with mighty wings outspread\nDove-like satst brooding on the vast Abyss\nAnd mad’st it pregnant: what in me is dark\nIllumine, what is low raise and support;\nThat to the highth of this great argument\nI may assert th’ Eternal Providence,\nAnd justify the ways of God to men.  \nSay first, for Heaven hides nothing from thy view\nNor the deep tract of Hell, say first what cause\nMoved our grand parents in that happy state,\nFavored of Heaven so highly, to fall off.",
+    "style": {
+      "preset": 24,
+      "lineHeight": 1.2,
+      "size": 16
+    }
   },
   {
     "author": "Jonathan Swift",
     "title": "Gulliver’s Travels",
-    "content": "My father had a small estate in Nottinghamshire; I was the third of five sons. He sent me to Emanuel College in Cambridge at fourteen years old, where I resided three years, and applied myself close to my studies: but the charge of maintaining me, although I had a very scanty allowance, being too great for a narrow fortune, I was bound apprentice to Mr. James Bates, an eminent surgeon in London, with whom I continued four years. My father now and then sending me small sums of money, I laid them out in learning navigation, and other parts of the mathematics, useful to those who intend to travel, as I always believed it would be, some time or other, my fortune to do.\n\nWhen I left Mr. Bates, I went down to my father; from thence I was recommended by him to a Mr. John Kirke, who took me under his care. After some time, and a few voyages, I grew weary of the sea, and intended to stay at home with my father, but soon found that my old inclination to go abroad returned. Being advised to alter my condition, I married Mrs. Mary Burton, second daughter to Mr. Edmund Burton, hosier in Newgate-street, with whom I received four hundred pounds for a portion. But, my good master Bates dying two years after, and I having few friends, I determined to accept an advantageous offer that was made me to be surgeon to the Swallow, Captain Abraham Pannel, commander; with him I continued three years and a half, making several voyages."
+    "content": "My father had a small estate in Nottinghamshire; I was the third of five sons. He sent me to Emanuel College in Cambridge at fourteen years old, where I resided three years, and applied myself close to my studies: but the charge of maintaining me, although I had a very scanty allowance, being too great for a narrow fortune, I was bound apprentice to Mr. James Bates, an eminent surgeon in London, with whom I continued four years.\n@My father now and then sending me small sums of money, I laid them out in learning navigation, and other parts of the mathematics, useful to those who intend to travel, as I always believed it would be, some time or other, my fortune to do.\n\nWhen I left Mr. Bates, I went down to my father; from thence I was recommended by him to a Mr. John Kirke, who took me under his care.\n@After some time, and a few voyages, I grew weary of the sea, and intended to stay at home with my father, but soon found that my old inclination to go abroad returned. Being advised to alter my condition, I married Mrs. Mary Burton, second daughter to Mr. Edmund Burton, hosier in Newgate-street, with whom I received four hundred pounds for a portion.\n@But, my good master Bates dying two years after, and I having few friends, I determined to accept an advantageous offer that was made me to be surgeon to the Swallow, Captain Abraham Pannel, commander; with him I continued three years and a half, making several voyages.",
+    "style": {
+      "preset": 4,
+      "size": 22,
+      "lineHeight": 1.5
+    }
   },
   {
     "author": "Daniel Defoe",
     "title": "Robinson Crusoe",
-    "content": "I was born in the year 1632, in the city of York, of a good family, though not of that country, my father being a foreigner of Bremen, who settled first at Hull. He got a good estate by merchandise, and leaving off his trade lived afterward at York, from whence he had married my mother, whose relations were named Robinson, a very good family in that country, and from whom I was called Robinson Kreutznaer; but, by the usual corruption of words in England, we are now called, nay we call ourselves, and write our name, Crusoe; and so my companions always called me.\n\nI had two elder brothers, one of whom was lieutenant-colonel to an English regiment of foot in Flanders, formerly commanded by the famous Colonel Lockhart, and was killed at the battle near Dunkirk against the Spaniards. What became of my second brother I never knew; any more than my father or mother did know what was become of him. Being the third son of the family and not bred to any trade, my head began to be filled very early with rambling thoughts. My father, who was very ancient, had given me a competent share of learning, as far as house education and a country free school generally go, and designed me for the law; but I would be satisfied with nothing but going to sea, and my inclination to this led me so strongly against the will, nay, the commands of my father, and against all the entreaties and persuasions of my mother and other friends, that there seemed to be something fatal in that propension of nature tending directly to the life of misery which was to befall me."
+    "content": "I was born in the year 1632, in the city of York, of a good family, though not of that country, my father being a foreigner of Bremen, who settled first at Hull. He got a good estate by merchandise, and leaving off his trade lived afterward at York, from whence he had married my mother, whose relations were named Robinson, a very good family in that country, and from whom I was called Robinson Kreutznaer;\n@but, by the usual corruption of words in England, we are now called, nay we call ourselves, and write our name, Crusoe; and so my companions always called me.\n\nI had two elder brothers, one of whom was lieutenant-colonel to an English regiment of foot in Flanders, formerly commanded by the famous Colonel Lockhart, and was killed at the battle near Dunkirk against the Spaniards.\n@What became of my second brother I never knew; any more than my father or mother did know what was become of him. Being the third son of the family and not bred to any trade, my head began to be filled very early with rambling thoughts. My father, who was very ancient, had given me a competent share of learning, as far as house education and a country free school generally go, and designed me for the law;\n@but I would be satisfied with nothing but going to sea, and my inclination to this led me so strongly against the will, nay, the commands of my father, and against all the entreaties and persuasions of my mother and other friends, that there seemed to be something fatal in that propension of nature tending directly to the life of misery which was to befall me.",
+    "style": {
+      "preset": 10,
+      "size": 23,
+      "lineHeight": 1.5
+    }
   },
   {
     "author": "Samuel Johnson",
     "title": "A Dictionary of the English Language",
-    "content": "It is the fate of those who toil at the lower employments of life, to be rather driven by fear of evil than attracted by the prospect of good; to be exposed to censure without hope of praise; to be disgraced by miscarriage, or punished for neglect, where success would have been without applause, and diligence without reward. Among these unhappy mortals is the writer of dictionaries; whom mankind have considered, not as the pupil, but the slave of science, the pioneer of literature, doomed only to remove rubbish and clear obstructions from the paths through which learning and genius press forward to conquest and glory.\n\nMany have lamented the neglect of this useful study, and observed that neither the universities, nor the learned societies, have thought it worthy of their care. Few have encouraged its cultivation; and none have appropriated to it the honours due to higher attainments. Yet no man ventures to suppose that a dictionary is to be produced without a combination of study and judgment, or can be compiled by the mere industry of a plodding drudge. I, who have waited so long in expectation that this work would be undertaken by some superior capacity, have been compelled by necessity to attempt it myself. The world, whose favourites I have never been, must pardon the defects of my plan, if they cannot applaud its design."
+    "content": "It is the fate of those who toil at the lower employments of life, to be rather driven by fear of evil than attracted by the prospect of good; to be exposed to censure without hope of praise; to be disgraced by miscarriage, or punished for neglect, where success would have been without applause, and diligence without reward.\n@Among these unhappy mortals is the writer of dictionaries; whom mankind have considered, not as the pupil, but the slave of science, the pioneer of literature, doomed only to remove rubbish and clear obstructions from the paths through which learning and genius press forward to conquest and glory.\n@Many have lamented the neglect of this useful study, and observed that neither the universities, nor the learned societies, have thought it worthy of their care.\n@Few have encouraged its cultivation; and none have appropriated to it the honours due to higher attainments. Yet no man ventures to suppose that a dictionary is to be produced without a combination of study and judgment, or can be compiled by the mere industry of a plodding drudge.\n@I, who have waited so long in expectation that this work would be undertaken by some superior capacity, have been compelled by necessity to attempt it myself. The world, whose favourites I have never been, must pardon the defects of my plan, if they cannot applaud its design.",
+    "style": {
+      "preset": 32,
+      "size": 23,
+      "lineHeight": 1.5
+    }
   },
   {
     "author": "Jane Austen",
     "title": "Pride and Prejudice",
-    "content": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters. 'My dear Mr. Bennet,' said his lady to him one day, 'have you heard that Netherfield Park is let at last?'\n\nMr. Bennet replied that he had not. 'But it is,' returned she; 'for Mrs. Long has just been here, and she told me all about it.' Mr. Bennet made no answer. 'Do not you want to know who has taken it?' cried his wife impatiently. 'You want to tell me, and I have no objection to hearing it.' This was invitation enough. 'Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so delighted with it, that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.'"
+    "content": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.\n@However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters.\n@'My dear Mr. Bennet,' said his lady to him one day, 'have you heard that Netherfield Park is let at last?'\n\nMr. Bennet replied that he had not. 'But it is,' returned she; 'for Mrs. Long has just been here, and she told me all about it.' Mr. Bennet made no answer.\n@'Do not you want to know who has taken it?' cried his wife impatiently. 'You want to tell me, and I have no objection to hearing it.' This was invitation enough. 'Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England;\n@that he came down on Monday in a chaise and four to see the place, and was so delighted with it, that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.'",
+    "style": {
+      "preset": 28,
+      "size": 26
+    }
   },
   {
     "author": "Mary Shelley",
     "title": "Frankenstein",
-    "content": "It was on a dreary night of November that I beheld the accomplishment of my toils. With an anxiety that almost amounted to agony, I collected the instruments of life around me, that I might infuse a spark of being into the lifeless thing that lay at my feet. It was already one in the morning; the rain pattered dismally against the panes, and my candle was nearly burnt out, when, by the glimmer of the half-extinguished light, I saw the dull yellow eye of the creature open; it breathed hard, and a convulsive motion agitated its limbs.\n\nHow can I describe my emotions at this catastrophe, or how delineate the wretch whom with such infinite pains and care I had endeavoured to form? His limbs were in proportion, and I had selected his features as beautiful. Beautiful!—Great God! His yellow skin scarcely covered the work of muscles and arteries beneath; his hair was of a lustrous black, and flowing; his teeth of a pearly whiteness; but these luxuriances only formed a more horrid contrast with his watery eyes, that seemed almost of the same colour as the dun-white sockets in which they were set, his shrivelled complexion, and straight black lips. The beauty of the dream vanished, and breathless horror and disgust filled my heart."
+    "content": "It was on a dreary night of November that I beheld the accomplishment of my toils. With an anxiety that almost amounted to agony, I collected the instruments of life around me, that I might infuse a spark of being into the lifeless thing that lay at my feet. It was already one in the morning; the rain pattered dismally against the panes, and my candle was nearly burnt out, when, by the glimmer of the half-extinguished light, I saw the dull yellow eye of the creature open;\n@it breathed hard, and a convulsive motion agitated its limbs.\n\nHow can I describe my emotions at this catastrophe, or how delineate the wretch whom with such infinite pains and care I had endeavoured to form? His limbs were in proportion, and I had selected his features as beautiful. Beautiful!—Great God!\n@His yellow skin scarcely covered the work of muscles and arteries beneath; his hair was of a lustrous black, and flowing; his teeth of a pearly whiteness; but these luxuriances only formed a more horrid contrast with his watery eyes, that seemed almost of the same colour as the dun-white sockets in which they were set, his shrivelled complexion, and straight black lips. The beauty of the dream vanished, and breathless horror and disgust filled my heart.",
+    "style": {
+      "preset": 35,
+      "size": 25,
+      "lineHeight": 1.2
+    }
   },
   {
     "author": "Edgar Allan Poe",
     "title": "The Raven",
-    "content": "Once upon a midnight dreary, while I pondered, weak and weary,\nOver many a quaint and curious volume of forgotten lore—\nWhile I nodded, nearly napping, suddenly there came a tapping,\nAs of some one gently rapping, rapping at my chamber door.\n“’Tis some visitor,” I muttered, “tapping at my chamber door—\nOnly this and nothing more.”\n\nAh, distinctly I remember it was in the bleak December;\nAnd each separate dying ember wrought its ghost upon the floor.\nEagerly I wished the morrow;—vainly I had sought to borrow\nFrom my books surcease of sorrow—sorrow for the lost Lenore—\nFor the rare and radiant maiden whom the angels name Lenore—\nNameless here for evermore.\n\nAnd the silken sad uncertain rustling of each purple curtain\nThrilled me—filled me with fantastic terrors never felt before;\nSo that now, to still the beating of my heart, I stood repeating,\n“’Tis some visitor entreating entrance at my chamber door—\nSome late visitor entreating entrance at my chamber door;\nThis it is and nothing more.”"
+    "content": "Once upon a midnight dreary, while I pondered, weak and weary,\nOver many a quaint and curious volume of forgotten lore—\nWhile I nodded, nearly napping, suddenly there came a tapping,\nAs of some one gently rapping, rapping at my chamber door.\n“’Tis some visitor,” I muttered, “tapping at my chamber door—\nOnly this and nothing more.”\n@Ah, distinctly I remember it was in the bleak December;\nAnd each separate dying ember wrought its ghost upon the floor.\nEagerly I wished the morrow;—vainly I had sought to borrow\nFrom my books surcease of sorrow—sorrow for the lost Lenore—\nFor the rare and radiant maiden whom the angels name Lenore—\nNameless here for evermore.\n@And the silken sad uncertain rustling of each purple curtain\nThrilled me—filled me with fantastic terrors never felt before;\nSo that now, to still the beating of my heart, I stood repeating,\n“’Tis some visitor entreating entrance at my chamber door—\nSome late visitor entreating entrance at my chamber door;\nThis it is and nothing more.”",
+    "style": {
+      "preset": 16,
+      "lineHeight": 1.2,
+      "size": 17
+    }
   },
   {
     "author": "Charles Dickens",
     "title": "A Tale of Two Cities",
-    "content": "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way—in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.\n\nThere was a king with a large jaw and a queen with a plain face on the throne of England; there were a king with a large jaw and a queen with a fair face on the throne of France. In both countries it was clearer than crystal to the lords of the State preserves of loaves and fishes, that things in general were settled forever. It was the year of Our Lord one thousand seven hundred and seventy-five. Spiritual revelations were conceded to England at that favoured period, as at this. Mrs. Southcott had recently attained her five-and-twentieth blessed birthday, of whom a prophetic private in the Life Guards had heralded the sublime appearance by announcing that arrangements were made for the swallowing up of London and Westminster. Even the Cock-lane ghost had been laid only a round dozen of years."
+    "content": "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us,\n@we were all going direct to Heaven, we were all going direct the other way—in short, the period was so far like the present period, that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.\n\nThere was a king with a large jaw and a queen with a plain face on the throne of England;\n@there were a king with a large jaw and a queen with a fair face on the throne of France. In both countries it was clearer than crystal to the lords of the State preserves of loaves and fishes, that things in general were settled forever. It was the year of Our Lord one thousand seven hundred and seventy-five. Spiritual revelations were conceded to England at that favoured period,\n@as at this. Mrs. Southcott had recently attained her five-and-twentieth blessed birthday, of whom a prophetic private in the Life Guards had heralded the sublime appearance by announcing that arrangements were made for the swallowing up of London and Westminster. Even the Cock-lane ghost had been laid only a round dozen of years.",
+    "style": {
+      "preset": 2,
+      "size": 28
+    }
   },
   {
     "author": "Charlotte Brontë",
     "title": "Jane Eyre",
-    "content": "There was no possibility of taking a walk that day. We had been wandering, indeed, in the leafless shrubbery an hour in the morning; but since dinner (Mrs. Reed, when there was no company, dined early) the cold winter wind had brought with it clouds so sombre and a rain so penetrating, that further out-of-door exercise was now out of the question. I was glad of it: I never liked long walks, especially on chilly afternoons. Dreadful to me was the coming home in the raw twilight, with nipped fingers and toes, and a heart saddened by the chidings of Bessie, the nurse, and humbled by the consciousness of my physical inferiority to Eliza, John, and Georgiana Reed.\n\nThe said Eliza, John, and Georgiana were now clustered round their mama in the drawing-room: she lay reclined on a sofa by the fireside, and with her darlings about her (for the time neither quarrelling nor crying) looked perfectly happy. Me, she had dispensed from joining the group; saying, 'She regretted to be under the necessity of keeping me at a distance; but that until she heard from Bessie, and could discover by her own observation, that I was endeavouring in good earnest to acquire a more sociable and childlike disposition—a more attractive and sprightly manner—something lighter, franker, more natural, as it were—she really must exclude me from privileges intended only for contented, happy, little children.' 'What does Bessie say I have done?' I asked. 'Jane, I don’t like cavillers or questioners; besides, there is something truly forbidding in a child taking up her elders in that tone.'"
+    "content": "There was no possibility of taking a walk that day. We had been wandering, indeed, in the leafless shrubbery an hour in the morning; but since dinner (Mrs. Reed, when there was no company, dined early) the cold winter wind had brought with it clouds so sombre and a rain so penetrating, that further out-of-door exercise was now out of the question.\n@I was glad of it: I never liked long walks, especially on chilly afternoons. Dreadful to me was the coming home in the raw twilight, with nipped fingers and toes, and a heart saddened by the chidings of Bessie, the nurse, and humbled by the consciousness of my physical inferiority to Eliza, John, and Georgiana Reed.\n@The said Eliza, John, and Georgiana were now clustered round their mama in the drawing-room: she lay reclined on a sofa by the fireside, and with her darlings about her (for the time neither quarrelling nor crying) looked perfectly happy. Me, she had dispensed from joining the group; saying, 'She regretted to be under the necessity of keeping me at a distance;\n@but that until she heard from Bessie, and could discover by her own observation, that I was endeavouring in good earnest to acquire a more sociable and childlike disposition—a more attractive and sprightly manner—something lighter, franker, more natural, as it were—she really must exclude me from privileges intended only for contented, happy, little children.'\n@'What does Bessie say I have done?' I asked. 'Jane, I don’t like cavillers or questioners; besides, there is something truly forbidding in a child taking up her elders in that tone.'",
+    "style": {
+      "preset": 23,
+      "size": 23,
+      "lineHeight": 1.5
+    }
   },
   {
     "author": "Rudyard Kipling",
     "title": "The Jungle Book",
-    "content": "It was seven o’clock of a very warm evening in the Seeonee hills when Father Wolf woke up from his day’s rest, scratched himself, yawned, and spread out his paws one after the other to get rid of the sleepy feeling in their tips. Mother Wolf lay with her big grey nose dropped across her four tumbling, squealing cubs, and the moon shone into the mouth of the cave where they all lived. “Auowooo!” said Father Wolf, “it is time to hunt again.” And he was going to spring downhill when a little shadow with a bushy tail crossed the threshold and whined: “Good luck go with you, O Chief of the Wolves; and good luck and strong white teeth go with the noble children, that they may never forget the hungry in this world.”\n\nIt was the jackal—Tabaqui, the Dish-licker—and the wolves of India despise Tabaqui because he runs about making mischief and telling tales, and eating rags and pieces of leather from the village rubbish-heaps. But they are afraid of him too, because Tabaqui, more than anyone else in the Jungle, is apt to go mad, and then he forgets that he was ever afraid of anyone, and runs through the forest biting everything in his way. Even the tiger runs and hides when little Tabaqui goes mad, for madness is the most disgraceful thing that can overtake a wild creature. We call it hydrophobia, but they call it dewanee—the madness—and run."
+    "content": "It was seven o’clock of a very warm evening in the Seeonee hills when Father Wolf woke up from his day’s rest, scratched himself, yawned, and spread out his paws one after the other to get rid of the sleepy feeling in their tips.\n@Mother Wolf lay with her big grey nose dropped across her four tumbling, squealing cubs, and the moon shone into the mouth of the cave where they all lived. “Auowooo!” said Father Wolf, “it is time to hunt again.” And he was going to spring downhill when a little shadow with a bushy tail crossed the threshold and whined: “Good luck go with you, O Chief of the Wolves;\n@and good luck and strong white teeth go with the noble children, that they may never forget the hungry in this world.”\n\nIt was the jackal—Tabaqui, the Dish-licker—and the wolves of India despise Tabaqui because he runs about making mischief and telling tales, and eating rags and pieces of leather from the village rubbish-heaps.\n@But they are afraid of him too, because Tabaqui, more than anyone else in the Jungle, is apt to go mad, and then he forgets that he was ever afraid of anyone, and runs through the forest biting everything in his way.\n@Even the tiger runs and hides when little Tabaqui goes mad, for madness is the most disgraceful thing that can overtake a wild creature. We call it hydrophobia, but they call it dewanee—the madness—and run.",
+    "style": {
+      "preset": 34,
+      "size": 24
+    }
   },
   {
     "author": "H.G. Wells",
     "title": "The War of the Worlds",
-    "content": "No one would have believed in the last years of the nineteenth century that this world was being watched keenly and closely by intelligences greater than man’s and yet as mortal as his own; that as men busied themselves about their various concerns they were scrutinised and studied, perhaps almost as narrowly as a man with a microscope might scrutinise the transient creatures that swarm and multiply in a drop of water. With infinite complacency, men went to and fro over this globe about their little affairs, serene in their assurance of their empire over matter. It is possible that the infusoria under the microscope do the same. No one gave a thought to the older worlds of space as sources of human danger, or thought of them only to dismiss the idea of life upon them as impossible or improbable.\n\nYet, across the gulf of space, minds that are to our minds as ours are to those of the beasts that perish—intellects vast and cool and unsympathetic—regarded this earth with envious eyes, and slowly and surely drew their plans against us. And early in the twentieth century came the great disillusionment. We may not be able to imagine how each thread in that complex web of observation was woven, but we know now that we were never beyond scrutiny, nor were we safe."
+    "content": "No one would have believed in the last years of the nineteenth century that this world was being watched keenly and closely by intelligences greater than man’s and yet as mortal as his own; that as men busied themselves about their various concerns they were scrutinised and studied, perhaps almost as narrowly as a man with a microscope might scrutinise the transient creatures that swarm and multiply in a drop of water.\n@With infinite complacency, men went to and fro over this globe about their little affairs, serene in their assurance of their empire over matter. It is possible that the infusoria under the microscope do the same. No one gave a thought to the older worlds of space as sources of human danger, or thought of them only to dismiss the idea of life upon them as impossible or improbable.\n@Yet, across the gulf of space, minds that are to our minds as ours are to those of the beasts that perish—intellects vast and cool and unsympathetic—regarded this earth with envious eyes, and slowly and surely drew their plans against us. And early in the twentieth century came the great disillusionment. We may not be able to imagine how each thread in that complex web of observation was woven, but we know now that we were never beyond scrutiny, nor were we safe.",
+    "style": {
+      "preset": 13,
+      "size": 24
+    }
   },
   {
     "author": "Joseph Conrad",
     "title": "Heart of Darkness",
-    "content": "Kurtz discoursed. A voice! a voice! It rang deep to the very last. It survived his strength to hide in magnificent folds of eloquence the barren darkness of his heart. Oh, he struggled! He struggled! The wastes of his weary brain were haunted by shadowy images now—images of wealth and fame revolving obsequiously round his unextinguishable gift of noble and lofty expression. My Intended, my station, my career, my ideas—these were the subjects for the occasional utterances of elevated sentiments. The shade of the original Kurtz frequented the bedside of the hollow sham, whose fate it was to be buried presently in the mould of the primeval earth. But both the diabolic love and the unearthly hate of the mysteries it had penetrated fought for the possession of that soul satiated with primitive emotions. He cried in a whisper at some image, at some vision—he cried out twice, a cry that was no more than a breath:\n\n\"‘The horror! The horror!’\n\nI blew the candle out and left the cabin. The pilgrims were dining in the mess-room, and I took my place opposite the manager, who lifted his eyes to give me a questioning glance, which I successfully ignored. My heart felt numb, yet I was certain that the voice had given up its secret—the whisper of death."
+    "content": "Kurtz discoursed. A voice! a voice! It rang deep to the very last. It survived his strength to hide in magnificent folds of eloquence the barren darkness of his heart. Oh, he struggled! He struggled! The wastes of his weary brain were haunted by shadowy images now—images of wealth and fame revolving obsequiously round his unextinguishable gift of noble and lofty expression.\n@My Intended, my station, my career, my ideas—these were the subjects for the occasional utterances of elevated sentiments. The shade of the original Kurtz frequented the bedside of the hollow sham, whose fate it was to be buried presently in the mould of the primeval earth.\n@But both the diabolic love and the unearthly hate of the mysteries it had penetrated fought for the possession of that soul satiated with primitive emotions. He cried in a whisper at some image, at some vision—he cried out twice, a cry that was no more than a breath:\n@\"‘The horror! The horror!’\n\nI blew the candle out and left the cabin. The pilgrims were dining in the mess-room, and I took my place opposite the manager, who lifted his eyes to give me a questioning glance, which I successfully ignored. My heart felt numb, yet I was certain that the voice had given up its secret—the whisper of death.",
+    "style": {
+      "preset": 0,
+      "size": 25
+    }
   },
   {
     "author": "James Joyce",
     "title": "Ulysses",
-    "content": "...and Gibraltar as a girl where I was a Flower of the mountain yes when I put the rose in my hair like the Andalusian girls used or shall I wear a red yes and how he kissed me under the Moorish wall and I thought well as well him as another and then I asked him with my eyes to ask again yes and then he asked me would I yes to say yes my mountain flower and first I put my arms around him yes and drew him down to me so he could feel my breasts all perfume yes and his heart was going like mad and yes I said yes I will Yes.\n\nThere is nothing like a stream of consciousness to lay bare the stirrings of a mind in momentary repose. And in that hush, in that recollection of love and longing, there rests the entire weight of the day’s events. Words rush out unpunctuated, unbounded, yet they form a tapestry of all Molly has been and could be. In this final chapter of Ulysses, these thoughts carry a universal echo: a woman recalling youth, passion, and the quiet exultation of her own being, culminating in that most resonant affirmation: yes."
+    "content": "...and Gibraltar as a girl where I was a Flower of the mountain yes when I put the rose in my hair like the Andalusian girls used or shall I wear a red yes and how he kissed me under the Moorish wall and I thought well as well him as another and then I asked him with my eyes to ask again yes and then he asked me would I yes to say yes my mountain\n@flower and first I put my arms around him yes and drew him down to me so he could feel my breasts all perfume yes and his heart was going like mad and yes I said yes I will Yes.\n\nThere is nothing like a stream of consciousness to lay bare the stirrings of a mind in momentary repose. And in that hush, in that recollection of love and longing, there\n@rests the entire weight of the day’s events. Words rush out unpunctuated, unbounded, yet they form a tapestry of all Molly has been and could be. In this final chapter of Ulysses, these thoughts carry a universal echo: a woman recalling youth, passion, and the quiet exultation of her own being, culminating in that most resonant affirmation: yes.",
+    "style": {
+      "preset": 36,
+      "size": 24
+    }
   },
   {
     "author": "D.H. Lawrence",
     "title": "Sons and Lovers",
-    "content": "“The Bottoms” succeeded to “Hell Row.” Hell Row was a block of thatched, bulging cottages that stood by the brook-side on Greenhill Lane. There lived the colliers who worked in the little gin-pits two fields away. The cottages were black, low, bulging; the yards high-littered with ash-pits. The rough little gardens behind, thick with coal-soot and offal, were trodden by many clogs. Before their time, there had been a row of buildings on the hill, looking across at the village of Bestwood. The place was smokier now, but the sense of their environment lingered. In the early days, there was a dreadful row of cottages. For the rest, the life was beginning to strive and make patterns in the darkness.\n\nMrs. Morel always said the aftertaste of Hell Row somehow clung about the Bottoms, with all their fresh brick and mortar. She remembered the horror of that place. As a child, she had passed down that alleyway, terrified by the hush and gloom. Now the younger generation read deeper in the lines of their mothers’ faces. They learned the secrets that shaped these stifling houses. Paul Morel, only just beginning to see the world, would be bound by the smoldering stories beneath the bricks. This was the place that shaped him, the place that made and unmade."
+    "content": "“The Bottoms” succeeded to “Hell Row.” Hell Row was a block of thatched, bulging cottages that stood by the brook-side on Greenhill Lane. There lived the colliers who worked in the little gin-pits two fields away. The cottages were black, low, bulging; the yards high-littered with ash-pits.\n@The rough little gardens behind, thick with coal-soot and offal, were trodden by many clogs. Before their time, there had been a row of buildings on the hill, looking across at the village of Bestwood. The place was smokier now, but the sense of their environment lingered. In the early days, there was a dreadful row of cottages.\n@For the rest, the life was beginning to strive and make patterns in the darkness.\n\nMrs. Morel always said the aftertaste of Hell Row somehow clung about the Bottoms, with all their fresh brick and mortar. She remembered the horror of that place. As a child, she had passed down that alleyway, terrified by the hush and gloom.\n@Now the younger generation read deeper in the lines of their mothers’ faces. They learned the secrets that shaped these stifling houses. Paul Morel, only just beginning to see the world, would be bound by the smoldering stories beneath the bricks. This was the place that shaped him, the place that made and unmade.",
+    "style": {
+      "preset": 38,
+      "size": 26
+    }
   },
   {
     "author": "Virginia Woolf",
     "title": "Mrs Dalloway",
-    "content": "Mrs. Dalloway said she would buy the flowers herself. For Lucy had her work cut out for her. The doors would be taken off their hinges; Rumpelmayer’s men were coming. And then, thought Clarissa Dalloway, what a morning—fresh as if issued to children on a beach. What a lark! What a plunge! For so it had always seemed to her when, with a little squeak of the hinges, she had burst open the French windows and plunged at Bourton into the open air. How fresh, how calm, stiller than this of course, the air was in the early morning; like the flap of a wave; the kiss of a wave; chill and sharp yet solemn, feeling as she did, standing there at the open window, that something awful was about to happen.\n\nThe world in her mind was shimmering, opening onto possibilities that lay beyond the immediate bustle of her preparations. She felt alive yet tethered by the invisible threads of memory. The hush and expectant hum of London merged with her own heartbeat as she crossed Victoria Street. She was struck by the tenuous connections among strangers, all hurrying along different paths. And so on she walked, savoring the day, the morning that was hers."
+    "content": "Mrs. Dalloway said she would buy the flowers herself. For Lucy had her work cut out for her. The doors would be taken off their hinges; Rumpelmayer’s men were coming. And then, thought Clarissa Dalloway, what a morning—fresh as if issued to children on a beach. What a lark!\n@What a plunge! For so it had always seemed to her when, with a little squeak of the hinges, she had burst open the French windows and plunged at Bourton into the open air. How fresh, how calm, stiller than this of course, the air was in the early morning; like the flap of a wave; the kiss of a wave;\n@chill and sharp yet solemn, feeling as she did, standing there at the open window, that something awful was about to happen.\n\nThe world in her mind was shimmering, opening onto possibilities that lay beyond the immediate bustle of her preparations. She felt alive yet tethered by the invisible threads of memory.\n@The hush and expectant hum of London merged with her own heartbeat as she crossed Victoria Street. She was struck by the tenuous connections among strangers, all hurrying along different paths. And so on she walked, savoring the day, the morning that was hers.",
+    "style": {
+      "preset": 12,
+      "size": 24,
+      "lineHeight": 1.5
+    }
   },
-
   {
     "author": "Katherine Mansfield",
     "title": "The Garden Party",
-    "content": "And after all the weather was ideal. They could not have had a more perfect day for a garden-party if they had ordered it. Windless, warm, the sky without a cloud. Only the blue was veiled with a haze of light gold, as it is sometimes in early summer. The gardener had been up since dawn, mowing the lawns and sweeping them, until the grass and the flat dark paths really looked like velvet. And when the men came to put up the marquee they struck the stoutest poles into the soft earth and said, “No, sir, no trouble.” Wherever you looked there were nothing but smiles.\n\nLaura, in her newly awakened enthusiasm, wandered across the lawn. She felt extraordinarily alive, everything was simple and gay, flowers seemed to sparkle and the rose-bushes quivered with a living joy. She couldn’t help feeling just a little proud of her family’s good taste. While Meg and Jose gave directions in the kitchen, Laura floated among the preparations, imagining how marvelous the guests would find the scene. But beneath the shimmering surface of the day and the hush of the lofty sky, something intangible—some darker note—hovered, waiting to reveal itself once the music and laughter died down."
+    "content": "And after all the weather was ideal. They could not have had a more perfect day for a garden-party if they had ordered it. Windless, warm, the sky without a cloud. Only the blue was veiled with a haze of light gold, as it is sometimes in early summer.\n@The gardener had been up since dawn, mowing the lawns and sweeping them, until the grass and the flat dark paths really looked like velvet. And when the men came to put up the marquee they struck the stoutest poles into the soft earth and said, “No, sir, no trouble.”\n@Wherever you looked there were nothing but smiles.\n\nLaura, in her newly awakened enthusiasm, wandered across the lawn. She felt extraordinarily alive, everything was simple and gay, flowers seemed to sparkle and the rose-bushes quivered with a living joy. She couldn’t help feeling just a little proud of her family’s good taste.\n@While Meg and Jose gave directions in the kitchen, Laura floated among the preparations, imagining how marvelous the guests would find the scene. But beneath the shimmering surface of the day and the hush of the lofty sky, something intangible—some darker note—hovered, waiting to reveal itself once the music and laughter died down.",
+    "style": {
+      "preset": 15,
+      "size": 26,
+      "lineHeight": 1.5
+    }
   },
   {
     "author": "T.S. Eliot",
     "title": "The Waste Land",
-    "content": "APRIL is the cruellest month, breeding\nLilacs out of the dead land, mixing\nMemory and desire, stirring\nDull roots with spring rain.\nWinter kept us warm, covering\nEarth in forgetful snow, feeding\nA little life with dried tubers.\n\nSummer surprised us, coming over the Starnbergersee\nWith a shower of rain; we stopped in the colonnade,\nAnd went on in sunlight, into the Hofgarten,\nAnd drank coffee, and talked for an hour.\nBin gar keine Russin, stamm’ aus Litauen, echt deutsch.\n\nAnd when we were children, staying at the arch-duke’s,\nMy cousin’s, he took me out on a sled,\nAnd I was frightened. He said, Marie,\nMarie, hold on tight. And down we went.\nIn the mountains, there you feel free.\n\nSo begins “The Burial of the Dead,” the first section of T. S. Eliot’s “The Waste Land.” The poem’s haunting imagery evokes a landscape of spiritual desolation. Eliot’s use of fragmentation, multilingual references, and shifts in voice mirrors the confusion of a post-war world. The fertile month of April, rather than symbolizing rebirth, heralds painful reminders of what has been lost. Memory and desire collide, mixing the personal with the collective, shaping a modern consciousness still reeling from upheaval."
+    "content": "APRIL is the cruellest month, breeding\nLilacs out of the dead land, mixing\nMemory and desire, stirring\nDull roots with spring rain.\nWinter kept us warm, covering\nEarth in forgetful snow, feeding\nA little life with dried tubers.\n@Summer surprised us, coming over the Starnbergersee\nWith a shower of rain; we stopped in the colonnade,\nAnd went on in sunlight, into the Hofgarten,\nAnd drank coffee, and talked for an hour.\nBin gar keine Russin, stamm’ aus Litauen, echt deutsch.\n@And when we were children, staying at the arch-duke’s,\nMy cousin’s, he took me out on a sled,\nAnd I was frightened. He said, Marie,\nMarie, hold on tight. And down we went.\nIn the mountains, there you feel free.\n@So begins “The Burial of the Dead,” the first section of T. S. Eliot’s “The Waste Land.” The poem’s haunting imagery evokes a landscape of spiritual desolation. Eliot’s use of fragmentation, multilingual references, and shifts in voice mirrors the confusion of a post-war world. The fertile month of April, rather than symbolizing rebirth, heralds painful reminders of what has been lost. Memory and desire collide, mixing the personal with the collective, shaping a modern consciousness still reeling from upheaval.",
+    "style": {
+      "preset": 21,
+      "lineHeight": 1.2,
+      "size": 18
+    }
   },
   {
     "author": "Robert Frost",
     "title": "The Road Not Taken",
-    "content": "Two roads diverged in a yellow wood,\nAnd sorry I could not travel both\nAnd be one traveler, long I stood\nAnd looked down one as far as I could\nTo where it bent in the undergrowth;\n\nThen took the other, as just as fair,\nAnd having perhaps the better claim,\nBecause it was grassy and wanted wear;\nThough as for that the passing there\nHad worn them really about the same,\n\nAnd both that morning equally lay\nIn leaves no step had trodden black.\nOh, I kept the first for another day!\nYet knowing how way leads on to way,\nI doubted if I should ever come back.\n\nI shall be telling this with a sigh\nSomewhere ages and ages hence:\nTwo roads diverged in a wood, and I—\nI took the one less traveled by,\nAnd that has made all the difference.\n\nCOMMENTARY:\nRobert Frost’s “The Road Not Taken” is among the most famous poems in American literature. Although often read as a celebration of individualism, the poem’s subtle twist lies in acknowledging that both roads are worn “really about the same.” The speaker’s reflection focuses on how we remember and justify our choices, perhaps romanticizing them in hindsight. Frost’s conversational style and use of natural imagery make the verse accessible, while the deeper irony challenges readers to question the stories we tell ourselves. The final lines, with the repeated refrain of “I” and that decisive “difference,” capture how life’s paths become part of our personal mythology—whether or not our choice was truly unique."
+    "content": "Two roads diverged in a yellow wood,\nAnd sorry I could not travel both\nAnd be one traveler, long I stood\nAnd looked down one as far as I could\nTo where it bent in the undergrowth;\n@Then took the other, as just as fair,\nAnd having perhaps the better claim,\nBecause it was grassy and wanted wear;\nThough as for that the passing there\nHad worn them really about the same,\n@And both that morning equally lay\nIn leaves no step had trodden black.\nOh, I kept the first for another day!\nYet knowing how way leads on to way,\nI doubted if I should ever come back.\n@I shall be telling this with a sigh\nSomewhere ages and ages hence:\nTwo roads diverged in a wood, and I—\nI took the one less traveled by,\nAnd that has made all the difference.\n@COMMENTARY:\nRobert Frost’s “The Road Not Taken” is among the most famous poems in American literature. Although often read as a celebration of individualism, the poem’s subtle twist lies in acknowledging that both roads are worn “really about the same.” The speaker’s reflection focuses on how we remember and justify our choices, perhaps romanticizing them in hindsight.\n@Frost’s conversational style and use of natural imagery make the verse accessible, while the deeper irony challenges readers to question the stories we tell ourselves. The final lines, with the repeated refrain of “I” and that decisive “difference,” capture how life’s paths become part of our personal mythology—whether or not our choice was truly unique.",
+    "style": {
+      "preset": 11,
+      "lineHeight": 1.5,
+      "size": 20
+    }
   },
   {
     "author": "Willa Cather",
     "title": "My Ántonia",
-    "content": "I first heard of Ántonia on what seemed to me an interminable journey across the great midland plain of North America. I was ten years old then; I had lost both my father and mother within a year, and my Virginia relatives were sending me out to my grandparents, who lived in Nebraska. I traveled in the care of a mountain boy, Jake Marpole, one of the “hands” on my father’s old farm under the Blue Ridge, who was now going West to work for my grandfather. Jake’s experience of the world was not much wider than mine.\n\nThere was a wagon waiting for us at the station, and Jake climbed to the driver’s seat while I sat on the straw in the bottom of the wagon. As we jolted along over the rough prairie roads, the vast openness pressed upon me. Everywhere the sky met the rolling land in a distant horizon, pink and gold with the sinking sun. I remember feeling I had left behind the very axis of my life. Yet the loneliness of those shimmering fields was tempered by a strange sense of freedom. In that moment, I first sensed the quiet, unspoken promise of the West."
+    "content": "I first heard of Ántonia on what seemed to me an interminable journey across the great midland plain of North America. I was ten years old then;\n@I had lost both my father and mother within a year, and my Virginia relatives were sending me out to my grandparents, who lived in Nebraska. I traveled in the care of a mountain boy, Jake Marpole, one of the “hands” on my father’s old farm under the Blue Ridge, who was now going West to work for my grandfather.\n@Jake’s experience of the world was not much wider than mine.\n\nThere was a wagon waiting for us at the station, and Jake climbed to the driver’s seat while I sat on the straw in the bottom of the wagon. As we jolted along over the rough prairie roads, the vast openness pressed upon me.\n@Everywhere the sky met the rolling land in a distant horizon, pink and gold with the sinking sun. I remember feeling I had left behind the very axis of my life. Yet the loneliness of those shimmering fields was tempered by a strange sense of freedom. In that moment, I first sensed the quiet, unspoken promise of the West.",
+    "style": {
+      "preset": 9,
+      "size": 24,
+      "lineHeight": 1.5
+    }
+  },
+  {
+    "author": "Emily Dickinson",
+    "title": "“Hope” is the thing with feathers",
+    "style": {
+      "preset": 2,
+      "lineHeight": 2.0,
+      "align": "center",
+      "size": 22
+    },
+    "content": "Hope is the thing with feathers\nThat perches in the soul,\nAnd sings the tune without the words,\nAnd never stops at all,\n\nAnd sweetest in the gale is heard;\nAnd sore must be the storm\nThat could abash the little bird\nThat kept so many warm.\n@I’ve heard it in the chillest land,\nAnd on the strangest sea;\nYet, never, in extremity,\nIt asked a crumb of me."
+  },
+  {
+    "author": "William Blake",
+    "title": "Eternity",
+    "style": {
+      "preset": 35,
+      "lineHeight": 2.5,
+      "align": "center",
+      "size": 23
+    },
+    "content": "He who binds to himself a joy\nDoes the winged life destroy;\nBut he who kisses the joy as it flies\nLives in eternity’s sun rise."
+  },
+  {
+    "author": "William Wordsworth",
+    "title": "I Wandered Lonely as a Cloud",
+    "style": {
+      "preset": 33,
+      "lineHeight": 2.0,
+      "size": 18
+    },
+    "content": "I wandered lonely as a cloud\nThat floats on high o’er vales and hills,\nWhen all at once I saw a crowd,\nA host, of golden daffodils;\nBeside the lake, beneath the trees,\nFluttering and dancing in the breeze.\n@Continuous as the stars that shine\nAnd twinkle on the milky way,\nThey stretched in never-ending line\nAlong the margin of a bay:\nTen thousand saw I at a glance,\nTossing their heads in sprightly dance.\n@The waves beside them danced; but they\nOut-did the sparkling waves in glee:\nA poet could not but be gay,\nIn such a jocund company:\nI gazed—and gazed—but little thought\nWhat wealth the show to me had brought:\n@For oft, when on my couch I lie\nIn vacant or in pensive mood,\nThey flash upon that inward eye\nWhich is the bliss of solitude;\nAnd then my heart with pleasure fills,\nAnd dances with the daffodils."
+  },
+  {
+    "author": "Christina Rossetti",
+    "title": "Who Has Seen the Wind?",
+    "style": {
+      "preset": 41,
+      "lineHeight": 2.0,
+      "align": "center",
+      "size": 18
+    },
+    "content": "Who has seen the wind?\nNeither I nor you:\nBut when the leaves hang trembling,\nThe wind is passing through.\n\nWho has seen the wind?\nNeither you nor I:\nBut when the trees bow down their heads,\nThe wind is passing by."
+  },
+  {
+    "author": "Sara Teasdale",
+    "title": "There Will Come Soft Rains",
+    "style": {
+      "preset": 24,
+      "lineHeight": 2.0,
+      "size": 16
+    },
+    "content": "There will come soft rains and the smell of the ground,\nAnd swallows circling with their shimmering sound;\n\nAnd frogs in the pools singing at night,\nAnd wild plum trees in tremulous white;\n\nRobins will wear their feathery fire,\nWhistling their whims on a low fence-wire;\n@And not one will know of the war, not one\nWill care at the last when it is done.\n\nNot one would mind, neither bird nor tree,\nIf mankind perished utterly;\n\nAnd Spring herself, when she woke at dawn\nWould scarcely know that we were gone."
+  },
+  {
+    "author": "William Shakespeare",
+    "title": "Sonnet 18",
+    "style": {
+      "preset": 31,
+      "lineHeight": 1.5,
+      "size": 16
+    },
+    "content": "Shall I compare thee to a summer’s day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer’s lease hath all too short a date;\nSometime too hot the eye of heaven shines,\nAnd often is his gold complexion dimm’d;\nAnd every fair from fair sometime declines,\nBy chance or nature’s changing course untrimm’d;\n@But thy eternal summer shall not fade,\nNor lose possession of that fair thou ow’st;\nNor shall Death brag thou wander’st in his shade,\nWhen in eternal lines to time thou grow’st:\nSo long as men can breathe or eyes can see,\nSo long lives this, and this gives life to thee."
+  },
+  {
+    "author": "Robert Frost",
+    "title": "Stopping by Woods on a Snowy Evening",
+    "style": {
+      "preset": 8,
+      "lineHeight": 2.0,
+      "size": 20
+    },
+    "content": "Whose woods these are I think I know.\nHis house is in the village though;\nHe will not see me stopping here\nTo watch his woods fill up with snow.\n\nMy little horse must think it queer\nTo stop without a farmhouse near\nBetween the woods and frozen lake\nThe darkest evening of the year.\n@He gives his harness bells a shake\nTo ask if there is some mistake.\nThe only other sound’s the sweep\nOf easy wind and downy flake.\n\nThe woods are lovely, dark and deep,\nBut I have promises to keep,\nAnd miles to go before I sleep,\nAnd miles to go before I sleep."
+  },
+  {
+    "author": "John Keats",
+    "title": "Bright Star",
+    "style": {
+      "preset": 23,
+      "lineHeight": 1.5,
+      "size": 16
+    },
+    "content": "Bright star, would I were stedfast as thou art—\nNot in lone splendour hung aloft the night\nAnd watching, with eternal lids apart,\nLike nature’s patient, sleepless Eremite,\nThe moving waters at their priestlike task\nOf pure ablution round earth’s human shores,\nOr gazing on the new soft-fallen mask\nOf snow upon the mountains and the moors—\n@No—yet still stedfast, still unchangeable,\nPillow’d upon my fair love’s ripening breast,\nTo feel for ever its soft fall and swell,\nAwake for ever in a sweet unrest,\nStill, still to hear her tender-taken breath,\nAnd so live ever—or else swoon to death."
+  },
+  {
+    "author": "Walt Whitman",
+    "title": "A Noiseless Patient Spider",
+    "style": {
+      "preset": 24,
+      "lineHeight": 1.5,
+      "size": 17
+    },
+    "content": "A noiseless patient spider,\nI mark’d where on a little promontory it stood isolated,\nMark’d how to explore the vacant vast surrounding,\nIt launch’d forth filament, filament, filament, out of itself,\nEver unreeling them, ever tirelessly speeding them.\n@And you O my soul where you stand,\nSurrounded, detached, in measureless oceans of space,\nCeaselessly musing, venturing, throwing, seeking the spheres to connect them,\nTill the bridge you will need be form’d, till the ductile anchor hold,\nTill the gossamer thread you fling catch somewhere, O my soul."
+  },
+  {
+    "author": "Edward Thomas",
+    "title": "Adlestrop",
+    "style": {
+      "preset": 0,
+      "lineHeight": 2.0,
+      "size": 16
+    },
+    "content": "Yes. I remember Adlestrop—\nThe name, because one afternoon\nOf heat the express-train drew up there\nUnwontedly. It was late June.\n\nThe steam hissed. Someone cleared his throat.\nNo one left and no one came\nOn the bare platform. What I saw\nWas Adlestrop—only the name\n@And willows, willow-herb, and grass,\nAnd meadowsweet, and haycocks dry,\nNo whit less still and lonely fair\nThan the high cloudlets in the sky.\n\nAnd for that minute a blackbird sang\nClose by, and round him, mistier,\nFarther and farther, all the birds\nOf Oxfordshire and Gloucestershire."
+  },
+  {
+    "author": "W. B. Yeats",
+    "title": "The Lake Isle of Innisfree",
+    "style": {
+      "preset": 7,
+      "lineHeight": 2.0,
+      "size": 17
+    },
+    "content": "I will arise and go now, and go to Innisfree,\nAnd a small cabin build there, of clay and wattles made;\nNine bean-rows will I have there, a hive for the honey-bee,\nAnd live alone in the bee-loud glade.\n@And I shall have some peace there, for peace comes dropping slow,\nDropping from the veils of the morning to where the cricket sings;\nThere midnight’s all a glimmer, and noon a purple glow,\nAnd evening full of the linnet’s wings.\n@I will arise and go now, for always night and day\nI hear lake water lapping with low sounds by the shore;\nWhile I stand on the roadway, or on the pavements grey,\nI hear it in the deep heart’s core."
+  },
+  {
+    "author": "William Carlos Williams",
+    "title": "The Red Wheelbarrow",
+    "style": {
+      "preset": 29,
+      "size": 30,
+      "lineHeight": 1.5
+    },
+    "content": "so much depends\nupon\n\na red wheel\nbarrow\n\nglazed with rain\nwater\n\nbeside the white\nchickens"
+  },
+  {
+    "author": "Henry David Thoreau",
+    "title": "Walden",
+    "style": {
+      "preset": 39,
+      "size": 26,
+      "lineHeight": 1.5
+    },
+    "content": "I went to the woods because I wished to live deliberately, to front only the essential facts of life, and see if I could not learn what it had to teach, and not, when I came to die, discover that I had not lived."
+  },
+  {
+    "author": "Ralph Waldo Emerson",
+    "title": "Self-Reliance",
+    "style": {
+      "preset": 26,
+      "size": 30,
+      "lineHeight": 1.5
+    },
+    "content": "To believe your own thought, to believe that what is true for you in your private heart is true for all men,—that is genius.\n@Trust thyself: every heart vibrates to that iron string."
+  },
+  {
+    "title": "Note to self",
+    "style": {
+      "preset": 14,
+      "size": 36,
+      "lineHeight": 1.2
+    },
+    "content": "Small steps still count.\n\nSo does resting."
+  },
+  {
+    "title": "Sunday morning",
+    "style": {
+      "preset": 42,
+      "size": 26,
+      "lineHeight": 1.5
+    },
+    "content": "Coffee going cold on the windowsill. Nowhere to be until noon. The neighbour’s radio is playing something with strings in it, and for once I’m not reaching for my phone to find out what it is.\n\nI think this is what people mean by enough."
+  },
+  {
+    "title": "Three good things",
+    "style": {
+      "preset": 18,
+      "size": 28,
+      "lineHeight": 1.5
+    },
+    "content": "Three good things today:\n\n1. The bus came just as I reached the stop.\n2. A stranger laughed at my joke.\n3. I finally fixed the squeaky door."
+  },
+  {
+    "title": "Before the meeting",
+    "style": {
+      "preset": 25,
+      "size": 30,
+      "lineHeight": 1.5
+    },
+    "content": "Say the hard thing kindly.\n\nListen longer than feels comfortable.\n\nNobody remembers the slides. They remember how the room felt."
+  },
+  {
+    "title": "To my younger self",
+    "style": {
+      "preset": 40,
+      "size": 24,
+      "lineHeight": 1.5
+    },
+    "content": "You don’t have to have it figured out by thirty. Or forty. The people you’re trying to impress aren’t watching as closely as you think.\n\nCall your grandmother more. Learn to cook one thing really well. Go to bed."
+  },
+  {
+    "title": "Overheard",
+    "style": {
+      "preset": 44,
+      "size": 30,
+      "lineHeight": 1.5,
+      "align": "center"
+    },
+    "content": "“I’m not lost,\nI’m just early\nfor somewhere\nI haven’t found yet.”"
   }
 ]

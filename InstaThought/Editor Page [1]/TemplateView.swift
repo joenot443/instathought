@@ -64,12 +64,25 @@ struct TemplateCard: View {
 
         Spacer(minLength: 0)
 
-        VStack(alignment: .leading, spacing: 1) {
-          if let title = template.title {
-            Text(title).font(Cloud.font(13, .black)).lineLimit(1)
+        HStack(alignment: .bottom, spacing: 8) {
+          VStack(alignment: .leading, spacing: 1) {
+            if let title = template.title {
+              Text(title).font(Cloud.font(13, .black)).lineLimit(1)
+            }
+            if let author = template.author {
+              Text(author).font(Cloud.font(12, .semibold)).foregroundStyle(Cloud.quiet).lineLimit(1)
+            }
           }
-          if let author = template.author {
-            Text(author).font(Cloud.font(12, .semibold)).foregroundStyle(Cloud.quiet).lineLimit(1)
+          Spacer(minLength: 0)
+          if let look = template.look {
+            // The look the sample opens in: its font, on its colours.
+            Text("Aa")
+              .font(.custom(look.fontName, size: 13))
+              .foregroundStyle(look.foregroundColor)
+              .frame(width: 30, height: 30)
+              .background(Circle().fill(look.backgroundColor))
+              .overlay(Circle().strokeBorder(Cloud.stroke, lineWidth: 1.5))
+              .accessibilityHidden(true)
           }
         }
       }
@@ -81,6 +94,10 @@ struct TemplateCard: View {
     }
     .buttonStyle(TemplateCardButtonStyle())
   }
+}
+
+extension Template {
+  var look: Style? { style?.makeStyle() }
 }
 
 struct TemplateCardButtonStyle: ButtonStyle {
@@ -98,15 +115,37 @@ struct Template: Codable, Identifiable {
   let author: String?
   let title: String?
   let content: String
+  /// The look the sample opens in: one of the bundled presets, optionally resized or realigned.
+  let style: SampleStyle?
 
   // `id` is generated locally, not read from samples.json.
   private enum CodingKeys: String, CodingKey {
-    case author, title, content
+    case author, title, content, style
   }
 
   static let samples: [Template] = {
     let jsonPath = Bundle.main.path(forResource: "samples", ofType: "json")!
     return try! JSONDecoder().decode([Template].self, from: Data(contentsOf: URL(fileURLWithPath: jsonPath))).shuffled()
   }()
-  
+}
+
+struct SampleStyle: Codable {
+  /// Index into `Style.defaultStyles`.
+  let preset: Int
+  var size: CGFloat?
+  var lineHeight: CGFloat?
+  /// "left", "center", "right" or "justified".
+  var align: String?
+
+  /// A fresh copy of the preset with the overrides applied, so editing it never changes the preset.
+  func makeStyle() -> Style? {
+    guard Style.defaultStyles.indices.contains(preset) else { return nil }
+    let base = Style.defaultStyles[preset]
+    let style = Style(foregroundColor: base.foregroundColor, backgroundColor: base.backgroundColor,
+                      fontSize: size ?? base.fontSize, padding: base.padding, verticalPadding: base.verticalPadding,
+                      lineHeight: lineHeight ?? base.lineHeight, fontName: base.fontName, shape: base.shape)
+    // Style.init always starts left-aligned, so set alignment afterwards.
+    style.textAlignment = TextAlignmentOption.allCases.first { String(describing: $0) == align } ?? base.textAlignment
+    return style
+  }
 }

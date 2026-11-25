@@ -149,6 +149,23 @@ final class InstaThoughtUITests: XCTestCase {
     pause(1.5)
   }
 
+  /// Picking an inspiration sample brings its own look with it, not just its words.
+  @MainActor
+  func testSampleAppliesItsStyle() throws {
+    app.launchArguments = ["-screenshotScene", "editor"]
+    app.launch()
+    tap(button(containing: "Ideas"))
+    let sonnet = button(containing: "Sonnet 18")
+    for _ in 0..<12 where !sonnet.isHittable {
+      app.scrollViews.firstMatch.swipeUp()
+    }
+    tap(sonnet)
+    tap(app.buttons["Make it a page"])
+    let fontRow = app.buttons["Choose font"]
+    XCTAssertTrue(fontRow.waitForExistence(timeout: 5))
+    XCTAssertEqual(fontRow.value as? String, "Slabo 27px", "Sonnet 18 opens in its preset's font")
+  }
+
   /// Back from Preview lands on Style, with and without opening the share sheet first.
   @MainActor
   func testBackFromPreview() throws {

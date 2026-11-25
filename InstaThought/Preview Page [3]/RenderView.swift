@@ -86,8 +86,11 @@ class RenderView: UIView {
       NSLayoutConstraint.activate([
         textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: viewModel.style.padding),
         textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -viewModel.style.padding),
-        textView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: viewModel.style.verticalPadding + 36.0),
-        textView.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor, constant: -viewModel.style.verticalPadding)
+        // The screen's safe area as fixed numbers rather than the safe-area guide: pages are laid
+        // out off screen, where the guide reads zero while measuring but applies when drawing,
+        // which used to clip the last lines of a page.
+        textView.topAnchor.constraint(equalTo: topAnchor, constant: Self.screenSafeArea.top + viewModel.style.verticalPadding + 36.0),
+        textView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -(Self.screenSafeArea.bottom + viewModel.style.verticalPadding))
       ])
       
     case .square:
@@ -103,6 +106,13 @@ class RenderView: UIView {
     
   }
   
+  /// The safe-area insets of the app's window, which is what a page is laid out to match.
+  static var screenSafeArea: UIEdgeInsets {
+    UIApplication.shared.connectedScenes
+      .compactMap { ($0 as? UIWindowScene)?.windows.first { $0.isKeyWindow } }
+      .first?.safeAreaInsets ?? .zero
+  }
+
   @objc func handleTap() {
     onTap()
   }
@@ -112,14 +122,26 @@ class RenderView: UIView {
     
     // Convert UITextView bounds to the coordinate system used by NSLayoutManager
     let textContainer = textView.textContainer
-    let glyphRange = layoutManager.glyphRange(forBoundingRect: textView.bounds, in: textContainer)
-    
-    if glyphRange.length == 0 {
-      return nil // No visible text
+    // Only lines that fit completely count as on this page. A line cut off at the bottom
+    // edge used to count too, so it was clipped here and never carried to the next page.
+    let inset = textView.textContainerInset
+    let visibleHeight = textView.bounds.height - inset.top - inset.bottom
+    let allGlyphs = layoutManager.glyphRange(for: textContainer)
+    var lastGlyph: Int?
+    layoutManager.enumerateLineFragments(forGlyphRange: allGlyphs) { rect, _, _, lineRange, stop in
+      // The first line always counts, even if it's taller than the page, so text never stalls.
+      if rect.maxY <= visibleHeight + 0.5 || lastGlyph == nil {
+        lastGlyph = NSMaxRange(lineRange)
+      } else {
+        stop.pointee = true
+      }
     }
-    
+    guard let lastGlyph, lastGlyph > 0 else {
+      return nil // No line fits
+    }
+
     // Convert glyph range to character range
-    return layoutManager.characterRange(forGlyphRange: glyphRange, actualGlyphRange: nil)
+    return layoutManager.characterRange(forGlyphRange: NSRange(location: 0, length: lastGlyph), actualGlyphRange: nil)
   }
 }
 

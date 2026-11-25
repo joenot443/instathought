@@ -67,6 +67,9 @@ struct TextEditorPage: View {
     .sheet(isPresented: $viewModel.isTemplatePickerActive) {
       InspirationSheet { template in
         viewModel.text = template.content
+        if let look = template.look {
+          viewModel.apply(preset: look)
+        }
       }
     }
     .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in

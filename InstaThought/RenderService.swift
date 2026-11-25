@@ -41,6 +41,13 @@ class RenderService {
           // Update remaining text by removing the rendered portion
           remainingText = String(remainingText.suffix(remainingText.count - renderedText.count))
 
+          // Draw only this page's text, so no partly visible line shows at the bottom edge.
+          let storage = renderView.textView.textStorage
+          let pageEnd = NSMaxRange(visibleRange)
+          if pageEnd < storage.length {
+            storage.deleteCharacters(in: NSRange(location: pageEnd, length: storage.length - pageEnd))
+          }
+
           // Render the view into an image
           let renderer = UIGraphicsImageRenderer(size: UIScreen.main.bounds.size)
           let image = renderer.image { _ in
