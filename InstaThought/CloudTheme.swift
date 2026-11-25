@@ -162,20 +162,6 @@ struct CloudLabelStyle: LabelStyle {
   }
 }
 
-struct CloudBackButton: View {
-  let action: () -> Void
-  var body: some View {
-    Button {
-      Cloud.tap()
-      action()
-    } label: {
-      Image(systemName: "chevron.left").font(.system(size: 16, weight: .bold))
-    }
-    .buttonStyle(CloudChipStyle(round: true))
-    .accessibilityLabel("Back")
-  }
-}
-
 struct CloudWordmark: View {
   var body: some View {
     HStack(spacing: 8) {
@@ -351,15 +337,29 @@ enum PageFonts {
   }
 }
 
-// MARK: - Swipe back with a hidden navigation bar
+// MARK: - Navigation bar items
 
-extension UINavigationController: @retroactive UIGestureRecognizerDelegate {
-  override open func viewDidLoad() {
-    super.viewDidLoad()
-    interactivePopGestureRecognizer?.delegate = self
+/// A navigation bar item drawn in Cloud style. On iOS 26 and later the bar would otherwise
+/// wrap it in a glass capsule; this turns that off so the Cloud outline shows instead.
+struct CloudBarItem<Content: View>: ToolbarContent {
+  var placement: ToolbarItemPlacement = .topBarTrailing
+  @ViewBuilder var content: () -> Content
+
+  var body: some ToolbarContent {
+    if #available(iOS 26.0, *) {
+      ToolbarItem(placement: placement, content: content).sharedBackgroundVisibility(.hidden)
+    } else {
+      ToolbarItem(placement: placement, content: content)
+    }
   }
+}
 
-  public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-    viewControllers.count > 1
+extension View {
+  /// Pushed screens keep the system navigation bar, so Back and the edge swipe behave natively,
+  /// but with no background or title so the sky shows through.
+  func cloudNavigationBar() -> some View {
+    navigationTitle("")
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbarBackground(.hidden, for: .navigationBar)
   }
 }

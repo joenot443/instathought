@@ -51,9 +51,6 @@ struct InstaThoughtView: View {
         .navigationDestination(isPresented: $viewModel.shouldNavigateToStyle) {
           StyleAndPreviewPage(viewModel: viewModel)
         }
-        .navigationDestination(isPresented: $viewModel.shouldNavigateToPreview) {
-          FullPreviewView(viewModel: viewModel)
-        }
     }.tint(Cloud.night)
   }
 }

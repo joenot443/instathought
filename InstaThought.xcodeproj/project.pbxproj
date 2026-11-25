@@ -6,6 +6,16 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		A1B2C3D40000000000000039 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 029F6BE22C88CE49007E7081 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 029F6BE92C88CE49007E7081;
+			remoteInfo = InstaThought;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXBuildFile section */
 		02A1B2C62D8F00030089B56F /* StyleToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A1B2C52D8F00030089B56F /* StyleToolbar.swift */; };
 		02A1B2C82D8F00050089B56F /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A1B2C72D8F00040089B56F /* FontPickerView.swift */; };
@@ -71,6 +81,7 @@
 		029F6C002C89105D007E7081 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F6BFF2C89105D007E7081 /* String+Extensions.swift */; };
 		02B1FC552C8F524000BE8E40 /* StyleBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1FC542C8F524000BE8E40 /* StyleBrowserView.swift */; };
 		02B1FC572C8F5F6400BE8E40 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1FC562C8F5F6400BE8E40 /* Style.swift */; };
+		A1B2C3D40000000000000033 /* InstaThoughtUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40000000000000031 /* InstaThoughtUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +150,8 @@
 		029F6BFF2C89105D007E7081 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		02B1FC542C8F524000BE8E40 /* StyleBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleBrowserView.swift; sourceTree = "<group>"; };
 		02B1FC562C8F5F6400BE8E40 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		A1B2C3D40000000000000031 /* InstaThoughtUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaThoughtUITests.swift; sourceTree = "<group>"; };
+		A1B2C3D40000000000000032 /* InstaThoughtUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaThoughtUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +161,13 @@
 			files = (
 				02946D942C8F8FC90029D941 /* FontPicker in Frameworks */,
 				020C773E2C921814008A47F5 /* AlertToast in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2C3D40000000000000036 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +253,7 @@
 		029F6BE12C88CE49007E7081 = {
 			isa = PBXGroup;
 			children = (
+				A1B2C3D40000000000000034 /* InstaThoughtUITests */,
 				029F6BEC2C88CE49007E7081 /* InstaThought */,
 				029F6BEB2C88CE49007E7081 /* Products */,
 			);
@@ -242,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				029F6BEA2C88CE49007E7081 /* InstaThought.app */,
+				A1B2C3D40000000000000032 /* InstaThoughtUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,6 +303,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A1B2C3D40000000000000034 /* InstaThoughtUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40000000000000031 /* InstaThoughtUITests.swift */,
+			);
+			path = InstaThoughtUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -305,6 +335,24 @@
 			productReference = 029F6BEA2C88CE49007E7081 /* InstaThought.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A1B2C3D40000000000000038 /* InstaThoughtUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D4000000000000003D /* Build configuration list for PBXNativeTarget "InstaThoughtUITests" */;
+			buildPhases = (
+				A1B2C3D40000000000000035 /* Sources */,
+				A1B2C3D40000000000000036 /* Frameworks */,
+				A1B2C3D40000000000000037 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1B2C3D4000000000000003A /* PBXTargetDependency */,
+			);
+			name = InstaThoughtUITests;
+			productName = InstaThoughtUITests;
+			productReference = A1B2C3D40000000000000032 /* InstaThoughtUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -317,6 +365,10 @@
 				TargetAttributes = {
 					029F6BE92C88CE49007E7081 = {
 						CreatedOnToolsVersion = 15.2;
+					};
+					A1B2C3D40000000000000038 = {
+						CreatedOnToolsVersion = 27.2;
+						TestTargetID = 029F6BE92C88CE49007E7081;
 					};
 				};
 			};
@@ -338,6 +390,7 @@
 			projectRoot = "";
 			targets = (
 				029F6BE92C88CE49007E7081 /* InstaThought */,
+				A1B2C3D40000000000000038 /* InstaThoughtUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -388,6 +441,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A1B2C3D40000000000000037 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -422,7 +482,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A1B2C3D40000000000000035 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D40000000000000033 /* InstaThoughtUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A1B2C3D4000000000000003A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 029F6BE92C88CE49007E7081 /* InstaThought */;
+			targetProxy = A1B2C3D40000000000000039 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		029F6BF62C88CE4C007E7081 /* Debug */ = {
@@ -618,6 +694,42 @@
 			};
 			name = Release;
 		};
+		A1B2C3D4000000000000003B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7VUCELU5PL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joecrozier.InstaThoughtUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = InstaThought;
+			};
+			name = Debug;
+		};
+		A1B2C3D4000000000000003C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7VUCELU5PL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joecrozier.InstaThoughtUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = InstaThought;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -635,6 +747,15 @@
 			buildConfigurations = (
 				029F6BF92C88CE4C007E7081 /* Debug */,
 				029F6BFA2C88CE4C007E7081 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D4000000000000003D /* Build configuration list for PBXNativeTarget "InstaThoughtUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D4000000000000003B /* Debug */,
+				A1B2C3D4000000000000003C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

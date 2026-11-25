@@ -282,15 +282,21 @@ struct PresetThumbnail: View {
   let onTap: () -> Void
 
   var body: some View {
-    RenderViewWrapper(text: text, style: thumbnailStyle, onTap: onTap)
-      .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-      .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(Cloud.night, lineWidth: Cloud.line))
-      .cloudEdge(radius: 12, depth: 4)
-      .padding(3)
-      .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).strokeBorder(ring, lineWidth: 4).opacity(isSelected ? 1 : 0))
-      .accessibilityElement()
-      .accessibilityLabel("Preset")
-      .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+    // A real SwiftUI button: the rendered page underneath is display-only, so the outline
+    // and ring overlays can't swallow the tap.
+    Button(action: onTap) {
+      RenderViewWrapper(text: text, style: thumbnailStyle, onTap: {})
+        .allowsHitTesting(false)
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(Cloud.night, lineWidth: Cloud.line))
+        .cloudEdge(radius: 12, depth: 4)
+        .padding(3)
+        .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).strokeBorder(ring, lineWidth: 4).opacity(isSelected ? 1 : 0))
+        .contentShape(Rectangle())
+    }
+    .buttonStyle(TemplateCardButtonStyle())
+    .accessibilityLabel("Preset")
+    .accessibilityAddTraits(isSelected ? .isSelected : [])
   }
 
   /// Small enough that words don't break across lines in a narrow portrait tile.

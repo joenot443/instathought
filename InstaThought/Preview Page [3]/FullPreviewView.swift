@@ -3,7 +3,6 @@ import SwiftUI
 
 struct FullPreviewView: View {
   @ObservedObject var viewModel: InstaThoughtViewModel
-  @Environment(\.dismiss) private var dismiss
   @Environment(\.openURL) private var openURL
   @State private var isSaving = false
   @State private var currentPage = 0
@@ -16,18 +15,6 @@ struct FullPreviewView: View {
       Cloud.sky.ignoresSafeArea()
 
       VStack(spacing: 0) {
-        HStack {
-          CloudBackButton { dismiss() }
-          Spacer()
-          if pageCount > 1 {
-            Text("Page \(currentPage + 1) of \(pageCount)")
-              .font(Cloud.font(15, .bold))
-              .foregroundStyle(Cloud.quiet)
-              .contentTransition(.numericText())
-          }
-        }
-        .cloudBar()
-
         TabView(selection: $currentPage) {
           ForEach(Array(viewModel.previewViewModels.enumerated()), id: \.element.id) { index, page in
             CloudPage(image: page.image)
@@ -80,7 +67,17 @@ struct FullPreviewView: View {
     }
     .animation(.spring(response: 0.35, dampingFraction: 0.8), value: viewModel.saveAlert)
     .animation(.spring(response: 0.35, dampingFraction: 0.75), value: isShowingSaved)
-    .toolbar(.hidden, for: .navigationBar)
+    .cloudNavigationBar()
+    .toolbar {
+      CloudBarItem {
+        if pageCount > 1 {
+          Text("Page \(currentPage + 1) of \(pageCount)")
+            .font(Cloud.font(15, .bold))
+            .foregroundStyle(Cloud.quiet)
+            .contentTransition(.numericText())
+        }
+      }
+    }
     .onChange(of: viewModel.isToastingCompletion) { _, saved in
       guard saved else { return }
       isShowingSaved = true
