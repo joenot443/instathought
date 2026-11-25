@@ -4,7 +4,13 @@ import SwiftUI
 struct FullPreviewView: View {
   @ObservedObject var viewModel: InstaThoughtViewModel
   @Environment(\.dismiss) var dismiss
-  
+  @Environment(\.openURL) private var openURL
+  @State private var isSaving = false
+
+  private var useWhiteText: Bool {
+    viewModel.previewViewModels.first?.image.shouldUseWhiteText ?? false
+  }
+
   var body: some View {
     NavigationView {
       ZStack(alignment: .bottom) {
@@ -22,29 +28,61 @@ struct FullPreviewView: View {
         .tabViewStyle(PageTabViewStyle())
         .background(Color.black)
         .ignoresSafeArea()
-        
+
         // Bottom semitransparent menu
-        VStack {
-          HStack {
-            Spacer()
-            // Save button
-            Button(action: {
-              PhotoService.saveImages(images: viewModel.previewViewModels.map { $0.image })
-              viewModel.isToastingCompletion = true
-              dismiss()
-            }) {
-              Text("Save")
-                .frame(maxWidth: .infinity)
-                .padding()
-                .foregroundColor(viewModel.previewViewModels.first!.image.shouldUseWhiteText ? .white : Theme.shared.colors.accentText.opacity(0.8))
-                .background(Color.white.opacity(0.2))
-                .cornerRadius(8)
-                .overlay(RoundedRectangle.init(cornerRadius: 8.0).fill(.clear).stroke(viewModel.previewViewModels.first!.image.shouldUseWhiteText ? .white.opacity(0.5) : Theme.shared.colors.accentText.opacity(0.5), style: .init(lineWidth: 1.0)))
-                .padding(.horizontal)
-            }
+        HStack(spacing: 12) {
+          previewButton(title: "Share", systemImage: "square.and.arrow.up") {
+            ShareService.share(images: viewModel.previewViewModels.map { $0.image })
           }
+          previewButton(title: "Save", systemImage: "arrow.down.to.line") {
+            Task { await save() }
+          }
+          .disabled(isSaving)
         }
+        .padding(.horizontal)
       }
+    }
+    .alert(item: $viewModel.saveAlert) { alert in
+      switch alert {
+      case .photosAccessDenied:
+        return Alert(
+          title: Text("Photos Access Is Off"),
+          message: Text("To save your pages, allow InstaThought to add photos in Settings."),
+          primaryButton: .default(Text("Open Settings")) {
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+              openURL(url)
+            }
+          },
+          secondaryButton: .cancel(Text("Not Now"))
+        )
+      case .saveFailed:
+        return Alert(
+          title: Text("Couldn't Save"),
+          message: Text("Your pages weren't saved to Photos. Please try again."),
+          dismissButton: .default(Text("OK"))
+        )
+      }
+    }
+  }
+
+  private func save() async {
+    isSaving = true
+    defer { isSaving = false }
+    if await viewModel.saveToPhotos() {
+      dismiss()
+    }
+  }
+
+  private func previewButton(title: String, systemImage: String, action: @escaping () -> Void) -> some View {
+    // A frosted background keeps the buttons legible over the page text.
+    Button(action: action) {
+      Label(title, systemImage: systemImage)
+        .font(.system(size: 17, weight: .semibold))
+        .frame(maxWidth: .infinity)
+        .padding()
+        .foregroundStyle(useWhiteText ? .white : Theme.shared.colors.accentText)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
+        .environment(\.colorScheme, useWhiteText ? .dark : .light)
     }
   }
 }

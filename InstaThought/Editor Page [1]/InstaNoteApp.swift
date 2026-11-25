@@ -13,14 +13,36 @@ import Combine
 @main
 struct InstaThoughtApp: App {
   @StateObject private var theme: Theme = Theme.shared
-  @State private var opacity: Double = 0.0
-  @State private var showSplash: Bool = false
-  
+  @StateObject private var viewModel: InstaThoughtViewModel
+  @Environment(\.scenePhase) private var scenePhase
+
+  init() {
+    #if DEBUG
+    ScreenshotScene.prepareLaunch()
+    #endif
+    _viewModel = StateObject(wrappedValue: .restored())
+  }
+
   var body: some Scene {
     WindowGroup {
       ZStack {
-        InstaThoughtView(viewModel: InstaThoughtViewModel(text: "", style: .defaultStyle))
+        #if DEBUG
+        if ScreenshotScene.current == .intro {
+          IntroView()
+        } else {
+          InstaThoughtView(viewModel: viewModel)
+            .environmentObject(theme)
+            .task { await ScreenshotScene.current?.apply(to: viewModel) }
+        }
+        #else
+        InstaThoughtView(viewModel: viewModel)
           .environmentObject(theme)
+        #endif
+      }
+    }
+    .onChange(of: scenePhase) { _, phase in
+      if phase != .active {
+        viewModel.saveDraft()
       }
     }
   }

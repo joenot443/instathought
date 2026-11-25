@@ -15,6 +15,7 @@ class InstaThoughtViewModel: ObservableObject {
   @ObservedObject var style: Style
   @Published var isFontPickerActive: Bool = false
   @Published var isToastingCompletion: Bool = false
+  @Published var saveAlert: SaveAlert?
   @Published var shouldNavigateToStyle: Bool = false
   @Published var shouldNavigateToPreview: Bool = false
   @Published var isTemplatePickerActive: Bool = false
@@ -33,6 +34,38 @@ class InstaThoughtViewModel: ObservableObject {
     
     requestPreviewRender()
     registerBindings()
+
+    $text
+      .dropFirst()
+      .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+      .sink { DraftStore.saveText($0) }
+      .store(in: &cancellables)
+  }
+
+  /// Starts from the thought and style the user left last time, if any.
+  static func restored() -> InstaThoughtViewModel {
+    InstaThoughtViewModel(text: DraftStore.loadText(), style: DraftStore.loadStyle() ?? .defaultStyle)
+  }
+
+  func saveDraft() {
+    DraftStore.saveText(text)
+    DraftStore.saveStyle(style)
+  }
+
+  /// Saves the rendered pages to Photos. Returns true only if they were actually saved;
+  /// otherwise sets `saveAlert` so the preview screen can explain what went wrong.
+  @MainActor
+  func saveToPhotos() async -> Bool {
+    switch await PhotoService.saveImages(images: previewViewModels.map { $0.image }) {
+    case .saved:
+      isToastingCompletion = true
+      return true
+    case .accessDenied:
+      saveAlert = .photosAccessDenied
+    case .failed:
+      saveAlert = .saveFailed
+    }
+    return false
   }
   
   func registerBindings() {
@@ -59,9 +92,17 @@ class InstaThoughtViewModel: ObservableObject {
       await MainActor.run {
         self.previewViewModels = RenderService.renderPreviews(text: self.text, style: self.style)
         self.isRenderingInProgress = false
+        DraftStore.saveStyle(self.style)
       }
     }
   }
   
   public static let defaultViewModel = InstaThoughtViewModel(text: .longNumbers, style: .defaultStyle)
+}
+
+enum SaveAlert: Identifiable {
+  case photosAccessDenied
+  case saveFailed
+
+  var id: Self { self }
 }
