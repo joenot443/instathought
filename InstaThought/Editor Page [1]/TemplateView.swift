@@ -141,11 +141,16 @@ struct TemplateCardButtonStyle: ButtonStyle {
 
 
 struct Template: Codable, Identifiable {
-  let id: UUID = UUID()
+  var id = UUID()
   let author: String?
   let title: String?
   let content: String
-  
+
+  // `id` is generated locally, not read from samples.json.
+  private enum CodingKeys: String, CodingKey {
+    case author, title, content
+  }
+
   static let samples: [Template] = {
     let jsonPath = Bundle.main.path(forResource: "samples", ofType: "json")!
     return try! JSONDecoder().decode([Template].self, from: Data(contentsOf: URL(fileURLWithPath: jsonPath))).shuffled()
