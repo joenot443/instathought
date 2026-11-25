@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02A1B2C42D8F00020089B56F /* AccordionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A1B2C32D8F00010089B56F /* AccordionSection.swift */; };
 		02A1B2C62D8F00030089B56F /* StyleToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A1B2C52D8F00030089B56F /* StyleToolbar.swift */; };
 		02A1B2C82D8F00050089B56F /* FontPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A1B2C72D8F00040089B56F /* FontPickerView.swift */; };
 		020C76F62C91D8C3008A47F5 /* QuattrocentoSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 020C76F52C91D8C3008A47F5 /* QuattrocentoSans.ttf */; };
@@ -57,14 +56,11 @@
 		02915FC62D887BB00089B56F /* StylePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FC52D887BA90089B56F /* StylePageView.swift */; };
 		02915FC92D887C400089B56F /* EditorPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FC82D887C360089B56F /* EditorPageView.swift */; };
 		02915FCB2D8893120089B56F /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FCA2D8893120089B56F /* ColorPickerView.swift */; };
-		02915FCF2D88B0EA0089B56F /* AdjusterViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FCE2D88B0E70089B56F /* AdjusterViews.swift */; };
 		02915FD12D88CAEF0089B56F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FD02D88CAEF0089B56F /* Theme.swift */; };
-		02915FD32D88DC190089B56F /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02915FD22D88DC190089B56F /* Buttons.swift */; };
 		02915FD72D8B4F9F0089B56F /* samples.json in Resources */ = {isa = PBXBuildFile; fileRef = 02915FD62D8B4F9F0089B56F /* samples.json */; };
 		A1B2C3D40000000000000001 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40000000000000002 /* PrivacyInfo.xcprivacy */; };
 		029160242D8CCCB00089B56F /* OpenColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029160232D8CCA650089B56F /* OpenColor.swift */; };
 		029160262D8E70980089B56F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029160252D8E708B0089B56F /* ViewModel.swift */; };
-		0291602A2D8E751B0089B56F /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029160292D8E751B0089B56F /* IntroView.swift */; };
 		02946D942C8F8FC90029D941 /* FontPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 02946D932C8F8FC90029D941 /* FontPicker */; };
 		029F6BEE2C88CE49007E7081 /* InstaNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F6BED2C88CE49007E7081 /* InstaNoteApp.swift */; };
 		029F6BF02C88CE49007E7081 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F6BEF2C88CE49007E7081 /* TextView.swift */; };
@@ -75,11 +71,9 @@
 		029F6C002C89105D007E7081 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F6BFF2C89105D007E7081 /* String+Extensions.swift */; };
 		02B1FC552C8F524000BE8E40 /* StyleBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1FC542C8F524000BE8E40 /* StyleBrowserView.swift */; };
 		02B1FC572C8F5F6400BE8E40 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1FC562C8F5F6400BE8E40 /* Style.swift */; };
-		02B1FC592C8F63EF00BE8E40 /* StyleControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B1FC582C8F63EF00BE8E40 /* StyleControlView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		02A1B2C32D8F00010089B56F /* AccordionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionSection.swift; sourceTree = "<group>"; };
 		02A1B2C52D8F00030089B56F /* StyleToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleToolbar.swift; sourceTree = "<group>"; };
 		02A1B2C72D8F00040089B56F /* FontPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPickerView.swift; sourceTree = "<group>"; };
 		020C76F52C91D8C3008A47F5 /* QuattrocentoSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = QuattrocentoSans.ttf; sourceTree = "<group>"; };
@@ -130,14 +124,11 @@
 		02915FC52D887BA90089B56F /* StylePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylePageView.swift; sourceTree = "<group>"; };
 		02915FC82D887C360089B56F /* EditorPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPageView.swift; sourceTree = "<group>"; };
 		02915FCA2D8893120089B56F /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
-		02915FCE2D88B0E70089B56F /* AdjusterViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjusterViews.swift; sourceTree = "<group>"; };
 		02915FD02D88CAEF0089B56F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = InstaThought/Theme.swift; sourceTree = SOURCE_ROOT; };
-		02915FD22D88DC190089B56F /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		02915FD62D8B4F9F0089B56F /* samples.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = samples.json; sourceTree = "<group>"; };
 		A1B2C3D40000000000000002 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		029160232D8CCA650089B56F /* OpenColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenColor.swift; sourceTree = "<group>"; };
 		029160252D8E708B0089B56F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		029160292D8E751B0089B56F /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		029F6BEA2C88CE49007E7081 /* InstaThought.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaThought.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		029F6BED2C88CE49007E7081 /* InstaNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaNoteApp.swift; sourceTree = "<group>"; };
 		029F6BEF2C88CE49007E7081 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -148,7 +139,6 @@
 		029F6BFF2C89105D007E7081 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		02B1FC542C8F524000BE8E40 /* StyleBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleBrowserView.swift; sourceTree = "<group>"; };
 		02B1FC562C8F5F6400BE8E40 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		02B1FC582C8F63EF00BE8E40 /* StyleControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,14 +199,10 @@
 			isa = PBXGroup;
 			children = (
 				02915FC52D887BA90089B56F /* StylePageView.swift */,
-				02915FCE2D88B0E70089B56F /* AdjusterViews.swift */,
-				02915FD22D88DC190089B56F /* Buttons.swift */,
-				02B1FC582C8F63EF00BE8E40 /* StyleControlView.swift */,
 				02B1FC542C8F524000BE8E40 /* StyleBrowserView.swift */,
 				02B1FC562C8F5F6400BE8E40 /* Style.swift */,
 				02915FC12D887B4B0089B56F /* PreviewCarouselView.swift */,
 				02915FCA2D8893120089B56F /* ColorPickerView.swift */,
-				02A1B2C32D8F00010089B56F /* AccordionSection.swift */,
 				02A1B2C52D8F00030089B56F /* StyleToolbar.swift */,
 				02A1B2C72D8F00040089B56F /* FontPickerView.swift */,
 			);
@@ -236,7 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				029F6BED2C88CE49007E7081 /* InstaNoteApp.swift */,
-				029160292D8E751B0089B56F /* IntroView.swift */,
 				029160252D8E708B0089B56F /* ViewModel.swift */,
 				02915FC82D887C360089B56F /* EditorPageView.swift */,
 				02915FBD2D8801500089B56F /* TemplateView.swift */,
@@ -410,14 +395,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02A1B2C42D8F00020089B56F /* AccordionSection.swift in Sources */,
 				02A1B2C62D8F00030089B56F /* StyleToolbar.swift in Sources */,
 				02A1B2C82D8F00050089B56F /* FontPickerView.swift in Sources */,
 				029F6C002C89105D007E7081 /* String+Extensions.swift in Sources */,
 				029F6BF02C88CE49007E7081 /* TextView.swift in Sources */,
 				02B1FC552C8F524000BE8E40 /* StyleBrowserView.swift in Sources */,
 				029160242D8CCCB00089B56F /* OpenColor.swift in Sources */,
-				02915FCF2D88B0EA0089B56F /* AdjusterViews.swift in Sources */,
 				020C773B2C920D3E008A47F5 /* UIImage+Text.swift in Sources */,
 				02915FC92D887C400089B56F /* EditorPageView.swift in Sources */,
 				027078872C89341E00273775 /* FullPreviewView.swift in Sources */,
@@ -425,13 +408,10 @@
 				029F6BFC2C88DCD8007E7081 /* RenderView.swift in Sources */,
 				02915FCB2D8893120089B56F /* ColorPickerView.swift in Sources */,
 				02915FC62D887BB00089B56F /* StylePageView.swift in Sources */,
-				02B1FC592C8F63EF00BE8E40 /* StyleControlView.swift in Sources */,
 				02915FBE2D8801500089B56F /* TemplateView.swift in Sources */,
 				02915FD12D88CAEF0089B56F /* Theme.swift in Sources */,
 				029160262D8E70980089B56F /* ViewModel.swift in Sources */,
 				02915FC22D887B4B0089B56F /* PreviewCarouselView.swift in Sources */,
-				02915FD32D88DC190089B56F /* Buttons.swift in Sources */,
-				0291602A2D8E751B0089B56F /* IntroView.swift in Sources */,
 				029F6BFE2C88EFC5007E7081 /* RenderService.swift in Sources */,
 				02B1FC572C8F5F6400BE8E40 /* Style.swift in Sources */,
 				027078892C894F9400273775 /* PhotoService.swift in Sources */,

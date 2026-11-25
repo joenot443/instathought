@@ -25,14 +25,10 @@ struct InstaThoughtApp: App {
     WindowGroup {
       ZStack {
         #if DEBUG
-        if ScreenshotScene.current == .intro {
-          IntroView()
-        } else {
-          InstaThoughtView(viewModel: viewModel)
-            .environmentObject(theme)
-            .preferredColorScheme(.light)
-            .task { await ScreenshotScene.current?.apply(to: viewModel) }
-        }
+        InstaThoughtView(viewModel: viewModel)
+          .environmentObject(theme)
+          .preferredColorScheme(.light)
+          .task { await ScreenshotScene.current?.apply(to: viewModel) }
         #else
         InstaThoughtView(viewModel: viewModel)
           .environmentObject(theme)

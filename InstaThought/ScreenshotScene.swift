@@ -10,7 +10,7 @@
 import SwiftUI
 
 enum ScreenshotScene: String, CaseIterable {
-  case intro, editor, inspiration, editorText, style, styleBrowser, fontPicker, preview, share, saved, photosDenied
+  case editor, inspiration, editorText, style, styleBrowser, fontPicker, preview, share, saved, photosDenied
 
   static let current: ScreenshotScene? = {
     let args = ProcessInfo.processInfo.arguments
@@ -32,7 +32,7 @@ enum ScreenshotScene: String, CaseIterable {
   @MainActor
   func apply(to viewModel: InstaThoughtViewModel) async {
     switch self {
-    case .intro, .editor:
+    case .editor:
       return
     case .inspiration:
       await pause(0.6)
