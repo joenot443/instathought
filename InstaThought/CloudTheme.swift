@@ -54,6 +54,8 @@ enum Cloud {
 
   /// UIKit version of `night`, for the text view.
   static let uiNight = dynamicUI("14284B", "EAF4FB")
+  /// UIKit version of `quiet`, for the editor's page-break divider.
+  static let uiQuiet = dynamicUI("3C5679", "AFC6DD")
 
   private static func dynamicUI(_ light: String, _ dark: String) -> UIColor {
     let l = UIColor(Color(hex: light)), d = UIColor(Color(hex: dark))
