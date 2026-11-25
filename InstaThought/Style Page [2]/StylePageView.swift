@@ -31,14 +31,35 @@ struct StyleAndPreviewPage: View {
       FullPreviewView(viewModel: viewModel)
     }
     .sheet(isPresented: $viewModel.isFontPickerActive) {
-      FontPickerView(selectedFont: $viewModel.style.fontName)
-        .presentationDetents([.large])
-        .presentationDragIndicator(.visible)
+      // Half height, so the page stays in view and changes as you pick.
+      FontPickerView(selectedFont: $viewModel.style.fontName, sample: viewModel.text)
+        .chooserSheet()
+    }
+    // The colour sheets live here, not in the Color tab, so they open whichever tab is showing.
+    .sheet(isPresented: $viewModel.isColorPickerActive) {
+      ColorPickerView(title: "Text", selected: viewModel.style.foregroundColor) { viewModel.style.foregroundColor = $0 }
+        .chooserSheet()
+    }
+    .sheet(isPresented: $viewModel.isBackgroundColorPickerActive) {
+      ColorPickerView(title: "Background", selected: viewModel.style.backgroundColor) { viewModel.style.backgroundColor = $0 }
+        .chooserSheet()
     }
     .sheet(isPresented: $viewModel.isStylePickerActive) {
       StyleBrowserView(styles: Style.defaultStyles, text: viewModel.text, selected: viewModel.style) { style in
         viewModel.apply(preset: style)
       }
     }
+  }
+}
+
+extension View {
+  /// Font and colour choosers: just over half height, with the page above left undimmed,
+  /// so it can be watched changing as you choose.
+  func chooserSheet() -> some View {
+    presentationDetents([.fraction(0.56), .large])
+      .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.56)))
+      .presentationContentInteraction(.scrolls)
+      .presentationDragIndicator(.visible)
+      .presentationCornerRadius(34)
   }
 }

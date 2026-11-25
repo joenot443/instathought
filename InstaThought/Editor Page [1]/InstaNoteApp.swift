@@ -25,9 +25,13 @@ struct InstaThoughtApp: App {
     WindowGroup {
       ZStack {
         #if DEBUG
+        if ScreenshotScene.current == .controls {
+          ControlGallery()
+        } else {
         InstaThoughtView(viewModel: viewModel)
           .environmentObject(theme)
           .task { await ScreenshotScene.current?.apply(to: viewModel) }
+        }
         #else
         InstaThoughtView(viewModel: viewModel)
           .environmentObject(theme)

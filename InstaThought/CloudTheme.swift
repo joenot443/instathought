@@ -33,6 +33,25 @@ enum Cloud {
   static let faint = dynamic("C9DCE6", "3A5683")
   static let line: CGFloat = 2.5
 
+  // Controls. Everything you can press is raised: a surface, a `stroke` outline and a solid
+  // `edge` underneath that it sinks onto when pressed. Everything you choose from sits in a
+  // recessed `track`, and the chosen option is a raised `thumb` inside it.
+
+  /// Outline of controls. Softer than `night` in dark mode, where pure white outlines glare.
+  static let stroke = dynamic("14284B", "93ADD3")
+  /// The solid edge under raised controls: navy by day, a deep shadow by night.
+  static let edge = dynamic("14284B", "050C1C")
+  /// Recessed wells: segmented tracks, stepper rows, the search field.
+  static let track = dynamic("DFF1F8", "102449")
+  /// The raised selection inside a track.
+  static let thumb = dynamic("FFFFFF", "2C4C82")
+  /// Fills while pressed.
+  static let sunPressed = Color(hex: "F4BA34")
+  static let whitePressed = dynamic("EEF8FC", "223F6E")
+  static let controlLine: CGFloat = 2
+  /// Sun as an ink, for small marks like a filled star on white: deeper by day so it reads.
+  static let sunInk = dynamic("E3A008", "FFC94D")
+
   /// UIKit version of `night`, for the text view.
   static let uiNight = dynamicUI("14284B", "EAF4FB")
 
@@ -61,6 +80,11 @@ enum Cloud {
   static func tap() {
     UIImpactFeedbackGenerator(style: .light).impactOccurred()
   }
+
+  /// The lighter click for moving between options.
+  static func tick() {
+    UISelectionFeedbackGenerator().selectionChanged()
+  }
 }
 
 // MARK: - Outlines
@@ -85,78 +109,209 @@ extension View {
 
 // MARK: - Buttons
 
-/// The big pressable button. `.sun` is the next step; there is at most one per screen.
+private struct CloudForcePressedKey: EnvironmentKey { static let defaultValue = false }
+
+extension EnvironmentValues {
+  /// Draws Cloud buttons in their pressed state, for the control gallery screenshots.
+  var cloudForcePressed: Bool {
+    get { self[CloudForcePressedKey.self] }
+    set { self[CloudForcePressedKey.self] = newValue }
+  }
+}
+
+/// A raised surface: fill, outline, and a solid edge `depth` points deep. Pressed, it sinks onto the edge.
+struct CloudRaised<S: InsettableShape>: ViewModifier {
+  let shape: S
+  var fill: Color
+  var stroke: Color = Cloud.stroke
+  var lineWidth: CGFloat = Cloud.controlLine
+  var depth: CGFloat = 3
+  var pressed = false
+
+  func body(content: Content) -> some View {
+    content
+      .background(shape.fill(fill))
+      .overlay(shape.strokeBorder(stroke, lineWidth: lineWidth))
+      .offset(y: pressed ? depth : 0)
+      .background(shape.fill(Cloud.edge).offset(y: depth))
+      .animation(.easeOut(duration: pressed ? 0.05 : 0.12), value: pressed)
+  }
+}
+
+/// A recessed well with a hard inner shadow along its top edge.
+struct CloudRecessed<S: SwiftUI.Shape>: ViewModifier {
+  let shape: S
+  func body(content: Content) -> some View {
+    content.background(shape.fill(Cloud.track.shadow(.inner(color: Cloud.edge.opacity(0.16), radius: 0, x: 0, y: 2))))
+  }
+}
+
+extension View {
+  func cloudRaised<S: InsettableShape>(_ shape: S, fill: Color = Cloud.white, depth: CGFloat = 3, lineWidth: CGFloat = Cloud.controlLine, pressed: Bool = false) -> some View {
+    modifier(CloudRaised(shape: shape, fill: fill, lineWidth: lineWidth, depth: depth, pressed: pressed))
+  }
+
+  func cloudRecessed<S: SwiftUI.Shape>(_ shape: S) -> some View {
+    modifier(CloudRecessed(shape: shape))
+  }
+}
+
+/// The big button. `.sun` is the next step; there is at most one per screen.
 struct CloudButtonStyle: ButtonStyle {
   enum Kind { case sun, white }
   var kind: Kind = .sun
   var height: CGFloat = 56
   @Environment(\.isEnabled) private var isEnabled
+  @Environment(\.cloudForcePressed) private var forcePressed
 
   func makeBody(configuration: Configuration) -> some View {
-    let pressed = configuration.isPressed && isEnabled
+    let pressed = (configuration.isPressed || forcePressed) && isEnabled
+    let fill: Color = kind == .sun ? (pressed ? Cloud.sunPressed : Cloud.sun) : (pressed ? Cloud.whitePressed : Cloud.white)
     return configuration.label
-      .font(Cloud.font(18, .black))
-      .labelStyle(CloudLabelStyle())
+      .font(Cloud.font(17, .black))
+      .labelStyle(CloudLabelStyle(iconSize: 16, spacing: 8))
       .lineLimit(1)
       .minimumScaleFactor(0.8)
       .foregroundStyle(isEnabled ? (kind == .sun ? Cloud.onSun : Cloud.night) : Cloud.placeholder)
-      .padding(.horizontal, 16)
+      .padding(.horizontal, 18)
       .frame(maxWidth: .infinity)
       .frame(height: height)
-      .background(Capsule().fill(isEnabled ? (kind == .sun ? Cloud.sun : Cloud.white) : Cloud.mist))
-      .overlay(Capsule().strokeBorder(isEnabled ? Cloud.night : Cloud.soft, lineWidth: Cloud.line))
-      .offset(y: pressed ? 3 : 0)
-      .background(Capsule().fill(isEnabled ? Cloud.night : Cloud.soft).offset(y: 4))
-      .animation(.easeOut(duration: 0.08), value: pressed)
+      .contentShape(Capsule())
+      .modifier(CloudRaised(shape: Capsule(),
+                            fill: isEnabled ? fill : Cloud.track,
+                            stroke: isEnabled ? Cloud.stroke : Cloud.soft,
+                            lineWidth: isEnabled ? Cloud.line : Cloud.controlLine,
+                            depth: isEnabled ? 4 : 0,
+                            pressed: pressed))
   }
 }
 
-/// Small outlined pill for bar actions (Ideas, Done, Close, Preview).
+/// Small raised pill for bar actions (Ideas, Done, Preview) and secondary actions.
 struct CloudChipStyle: ButtonStyle {
   var fill: Color = Cloud.white
   /// Text colour; pass `Cloud.onSun` when the fill is `Cloud.sun`.
   var ink: Color = Cloud.night
   var round = false
+  var size: CGFloat = 38
+  @Environment(\.cloudForcePressed) private var forcePressed
 
   func makeBody(configuration: Configuration) -> some View {
-    configuration.label
+    let pressed = configuration.isPressed || forcePressed
+    let pressedFill = fill == Cloud.sun ? Cloud.sunPressed : Cloud.whitePressed
+    return configuration.label
       .font(Cloud.font(15, .extraBold))
-      .labelStyle(CloudLabelStyle(spacing: 6))
+      .labelStyle(CloudLabelStyle(iconSize: 13, spacing: 6))
       .foregroundStyle(ink)
-      .padding(.horizontal, round ? 0 : 15)
-      .frame(minWidth: 40, minHeight: 40)
-      .frame(width: round ? 40 : nil)
-      .background(Capsule().fill(fill))
-      .overlay(Capsule().strokeBorder(Cloud.night, lineWidth: Cloud.line))
-      .scaleEffect(configuration.isPressed ? 0.94 : 1)
-      .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
+      .padding(.horizontal, round ? 0 : 14)
+      .frame(minWidth: size, minHeight: size)
+      .frame(width: round ? size : nil, height: size)
       .contentShape(Capsule())
+      .cloudRaised(Capsule(), fill: pressed ? pressedFill : fill, depth: 3, pressed: pressed)
+      .padding(.bottom, 3)
   }
 }
 
-/// Selectable pill (tabs, fonts, shapes). Selected: mist fill and an outline.
-struct CloudToggleStyle: ButtonStyle {
-  var isOn: Bool
-  var fill: Color = .clear
-  var radius: CGFloat = 20
+/// A row of options in a recessed track; the chosen one is a raised thumb that slides between them.
+struct CloudSegmented<Option: Hashable, Content: View>: View {
+  let options: [Option]
+  @Binding var selection: Option
+  var height: CGFloat = 38
+  var radius: CGFloat? = nil
+  var accessibilityLabel: (Option) -> String
+  @ViewBuilder var content: (Option, Bool) -> Content
+  @Namespace private var thumb
 
+  var body: some View {
+    let outer = radius ?? height / 2 + 4
+    HStack(spacing: 0) {
+      ForEach(options, id: \.self) { option in
+        let isOn = option == selection
+        Button {
+          guard !isOn else { return }
+          Cloud.tick()
+          withAnimation(.spring(response: 0.3, dampingFraction: 0.78)) { selection = option }
+        } label: {
+          content(option, isOn)
+            .foregroundStyle(isOn ? Cloud.night : Cloud.quiet)
+            .frame(maxWidth: .infinity)
+            .frame(height: height)
+            .background {
+              if isOn {
+                RoundedRectangle(cornerRadius: outer - 4, style: .continuous)
+                  .fill(Cloud.thumb)
+                  .overlay(RoundedRectangle(cornerRadius: outer - 4, style: .continuous).strokeBorder(Cloud.stroke, lineWidth: Cloud.controlLine))
+                  .background(RoundedRectangle(cornerRadius: outer - 4, style: .continuous).fill(Cloud.edge).offset(y: 2))
+                  .matchedGeometryEffect(id: "thumb", in: thumb)
+              }
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(SegmentPressStyle())
+        .accessibilityLabel(accessibilityLabel(option))
+        .accessibilityAddTraits(isOn ? .isSelected : [])
+      }
+    }
+    .padding(4)
+    .padding(.bottom, 2)
+    .cloudRecessed(RoundedRectangle(cornerRadius: outer, style: .continuous))
+  }
+}
+
+/// Unchosen segments dip slightly under the finger.
+private struct SegmentPressStyle: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
-      .foregroundStyle(isOn ? Cloud.night : Cloud.quiet)
-      .background(RoundedRectangle(cornerRadius: radius, style: .continuous).fill(isOn ? Cloud.mist : fill))
-      .overlay(RoundedRectangle(cornerRadius: radius, style: .continuous)
-        .strokeBorder(isOn ? Cloud.night : Color.clear, lineWidth: Cloud.line))
-      .scaleEffect(configuration.isPressed ? 0.95 : 1)
+      .scaleEffect(configuration.isPressed ? 0.96 : 1)
+      .opacity(configuration.isPressed ? 0.8 : 1)
       .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
+  }
+}
+
+/// A recessed row that opens a chooser: label on the left, the current value and a chevron on the right.
+struct CloudPickerRow<Value: View>: View {
+  let label: String
+  let action: () -> Void
+  @ViewBuilder var value: () -> Value
+
+  var body: some View {
+    Button {
+      Cloud.tap()
+      action()
+    } label: {
+      HStack(spacing: 10) {
+        Text(label).font(Cloud.font(15, .extraBold))
+        Spacer(minLength: 8)
+        value()
+        Image(systemName: "chevron.right")
+          .font(.system(size: 12, weight: .bold))
+          .foregroundStyle(Cloud.quiet)
+      }
+      .foregroundStyle(Cloud.night)
+      .padding(.leading, 16)
+      .padding(.trailing, 14)
+      .frame(height: 52)
       .contentShape(Rectangle())
+    }
+    .buttonStyle(RowPressStyle())
+    .cloudRecessed(RoundedRectangle(cornerRadius: 20, style: .continuous))
+  }
+}
+
+/// Rows darken a touch while pressed rather than moving.
+struct RowPressStyle: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .background(RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Cloud.edge.opacity(configuration.isPressed ? 0.06 : 0)))
+      .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
   }
 }
 
 struct CloudLabelStyle: LabelStyle {
+  var iconSize: CGFloat = 15
   var spacing: CGFloat = 8
   func makeBody(configuration: Configuration) -> some View {
     HStack(spacing: spacing) {
-      configuration.icon.font(.system(size: 15, weight: .bold))
+      configuration.icon.font(.system(size: iconSize, weight: .bold))
       configuration.title
     }
   }
@@ -180,7 +335,7 @@ struct CloudWordmark: View {
 
 // MARK: - Steppers
 
-/// A labelled row with − value + buttons on a mist background.
+/// A labelled recessed row with raised − and + buttons either side of the value.
 struct CloudStepperRow: View {
   let label: String
   let value: String
@@ -191,21 +346,21 @@ struct CloudStepperRow: View {
     HStack {
       Text(label).font(Cloud.font(15, .extraBold))
       Spacer()
-      HStack(spacing: 6) {
+      HStack(spacing: 4) {
         roundButton("minus", label: "Decrease \(label)", action: onMinus)
         Text(value)
           .font(Cloud.font(16, .black))
           .monospacedDigit()
-          .frame(minWidth: 44)
+          .frame(minWidth: 46)
           .contentTransition(.numericText())
         roundButton("plus", label: "Increase \(label)", action: onPlus)
       }
     }
     .foregroundStyle(Cloud.night)
     .padding(.leading, 16)
-    .padding(.trailing, 7)
-    .padding(.vertical, 7)
-    .background(RoundedRectangle(cornerRadius: 22, style: .continuous).fill(Cloud.mist))
+    .padding(.trailing, 8)
+    .frame(height: 52)
+    .cloudRecessed(RoundedRectangle(cornerRadius: 20, style: .continuous))
   }
 
   private func roundButton(_ symbol: String, label: String, action: @escaping () -> Void) -> some View {
@@ -213,9 +368,9 @@ struct CloudStepperRow: View {
       Cloud.tap()
       withAnimation(.snappy(duration: 0.15)) { action() }
     } label: {
-      Image(systemName: symbol).font(.system(size: 15, weight: .heavy))
+      Image(systemName: symbol).font(.system(size: 13, weight: .black))
     }
-    .buttonStyle(CloudChipStyle(round: true))
+    .buttonStyle(CloudChipStyle(round: true, size: 34))
     .accessibilityLabel(label)
   }
 }
@@ -308,32 +463,6 @@ struct TopRoundedEdge: SwiftUI.Shape {
     p.addQuadCurve(to: CGPoint(x: rect.maxX, y: rect.minY + radius), control: CGPoint(x: rect.maxX, y: rect.minY))
     p.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
     return p
-  }
-}
-
-// MARK: - Fonts offered on the Style screen
-
-enum PageFonts {
-  /// The faces used by the bundled presets, in preset order, without repeats.
-  static let bundled: [String] = {
-    var seen = Set<String>()
-    return Style.defaultStyles.map(\.fontName).filter { seen.insert($0).inserted }
-  }()
-
-  static func displayName(_ fontName: String) -> String {
-    let base = fontName
-      .replacingOccurrences(of: "-Roman_Regular", with: "")
-      .replacingOccurrences(of: "Roman-Regular", with: "")
-      .replacingOccurrences(of: "-Regular", with: "")
-      .replacingOccurrences(of: "-Medium", with: "")
-      .replacingOccurrences(of: "_Regular", with: "")
-    // "LibreBaskerville" -> "Libre Baskerville"; leave digits attached ("SourceSans3").
-    var out = ""
-    for (i, ch) in base.enumerated() {
-      if i > 0, ch.isUppercase, let prev = out.last, prev.isLowercase { out.append(" ") }
-      out.append(ch)
-    }
-    return out
   }
 }
 

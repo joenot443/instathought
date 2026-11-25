@@ -23,23 +23,12 @@ struct StyleToolbar: View {
 
   var body: some View {
     VStack(spacing: 0) {
-      HStack(spacing: 6) {
-        ForEach(StylePanel.allCases, id: \.self) { panel in
-          Button {
-            Cloud.tap()
-            withAnimation(.snappy(duration: 0.2)) { activePanel = panel }
-          } label: {
-            Text(panel.label)
-              .font(Cloud.font(14, .extraBold))
-              .frame(maxWidth: .infinity)
-              .padding(.vertical, 9)
-          }
-          .buttonStyle(CloudToggleStyle(isOn: activePanel == panel))
-          .accessibilityAddTraits(activePanel == panel ? .isSelected : [])
-        }
+      CloudSegmented(options: StylePanel.allCases, selection: $activePanel, height: 36,
+                     accessibilityLabel: { $0.label }) { panel, _ in
+        Text(panel.label).font(Cloud.font(15, .extraBold))
       }
       .padding(.horizontal, 18)
-      .padding(.top, 16)
+      .padding(.top, 18)
       .padding(.bottom, 14)
 
       Group {
@@ -50,12 +39,12 @@ struct StyleToolbar: View {
         case .styles: StylesPanel(viewModel: viewModel)
         }
       }
-      .frame(height: 226, alignment: .top)
+      .frame(height: 236, alignment: .top)
       .padding(.bottom, 6)
     }
     .foregroundStyle(Cloud.night)
     .background(TopRoundedEdge().fill(Cloud.white).ignoresSafeArea(edges: .bottom))
-    .overlay(TopRoundedEdge().stroke(Cloud.night, lineWidth: Cloud.line).ignoresSafeArea(edges: .bottom))
+    .overlay(TopRoundedEdge().stroke(Cloud.stroke, lineWidth: Cloud.line).ignoresSafeArea(edges: .bottom))
   }
 }
 
@@ -64,53 +53,26 @@ struct StyleToolbar: View {
 struct TypographyPanel: View {
   @ObservedObject var viewModel: InstaThoughtViewModel
 
-  /// The current face first, then the faces the presets use.
-  private var faces: [String] {
-    let current = viewModel.style.fontName
-    return [current] + PageFonts.bundled.filter { $0 != current }
-  }
-
   var body: some View {
     VStack(spacing: 8) {
-      ScrollView(.horizontal, showsIndicators: false) {
-        HStack(spacing: 8) {
-          ForEach(faces, id: \.self) { face in
-            Button {
-              Cloud.tap()
-              viewModel.style.fontName = face
-            } label: {
-              Text(PageFonts.displayName(face))
-                .font(.custom(face, size: 19))
-                .lineLimit(1)
-                .padding(.horizontal, 16)
-                .frame(height: 46)
-            }
-            .buttonStyle(CloudToggleStyle(isOn: viewModel.style.fontName == face, fill: Cloud.white, radius: 23))
-            .overlay(Capsule().strokeBorder(Cloud.faint, lineWidth: 2).opacity(viewModel.style.fontName == face ? 0 : 1))
-          }
-          Button {
-            Cloud.tap()
-            viewModel.isFontPickerActive = true
-          } label: {
-            Label("All fonts", systemImage: "textformat")
-          }
-          .buttonStyle(CloudChipStyle())
-        }
-        .padding(.horizontal, 18)
-        .padding(.vertical, 2)
+      let face = FontCatalog.face(viewModel.style.fontName)
+      CloudPickerRow(label: "Font", action: { viewModel.isFontPickerActive = true }) {
+        Text(face.name)
+          .font(.custom(face.id, size: 19))
+          .lineLimit(1)
       }
+      .accessibilityLabel("Choose font")
+      .accessibilityValue(face.name)
 
-      VStack(spacing: 8) {
-        CloudStepperRow(label: "Size", value: CloudStep.format(viewModel.style.fontSize),
-          onMinus: { viewModel.style.fontSize = CloudStep.next(viewModel.style.fontSize, range: 8...100, up: false) },
-          onPlus: { viewModel.style.fontSize = CloudStep.next(viewModel.style.fontSize, range: 8...100, up: true) })
-        CloudStepperRow(label: "Line spacing", value: CloudStep.format(viewModel.style.lineHeight),
-          onMinus: { viewModel.style.lineHeight = CloudStep.next(viewModel.style.lineHeight, options: Style.defaultLineHeights, up: false) },
-          onPlus: { viewModel.style.lineHeight = CloudStep.next(viewModel.style.lineHeight, options: Style.defaultLineHeights, up: true) })
-        AlignmentRow(selection: $viewModel.style.textAlignment)
-      }
-      .padding(.horizontal, 18)
+      CloudStepperRow(label: "Size", value: CloudStep.format(viewModel.style.fontSize),
+        onMinus: { viewModel.style.fontSize = CloudStep.next(viewModel.style.fontSize, range: 8...100, up: false) },
+        onPlus: { viewModel.style.fontSize = CloudStep.next(viewModel.style.fontSize, range: 8...100, up: true) })
+      CloudStepperRow(label: "Line spacing", value: CloudStep.format(viewModel.style.lineHeight),
+        onMinus: { viewModel.style.lineHeight = CloudStep.next(viewModel.style.lineHeight, options: Style.defaultLineHeights, up: false) },
+        onPlus: { viewModel.style.lineHeight = CloudStep.next(viewModel.style.lineHeight, options: Style.defaultLineHeights, up: true) })
+      AlignmentRow(selection: $viewModel.style.textAlignment)
     }
+    .padding(.horizontal, 18)
   }
 }
 
@@ -121,26 +83,17 @@ struct AlignmentRow: View {
     HStack {
       Text("Align").font(Cloud.font(15, .extraBold))
       Spacer()
-      HStack(spacing: 4) {
-        ForEach(TextAlignmentOption.allCases, id: \.self) { option in
-          Button {
-            Cloud.tap()
-            selection = option
-          } label: {
-            option.icon()
-              .font(.system(size: 15, weight: .bold))
-              .frame(width: 40, height: 40)
-          }
-          .buttonStyle(CloudToggleStyle(isOn: selection == option, fill: .clear, radius: 20))
-          .accessibilityLabel(option.name())
-          .accessibilityAddTraits(selection == option ? .isSelected : [])
-        }
+      CloudSegmented(options: TextAlignmentOption.allCases, selection: $selection, height: 32,
+                     accessibilityLabel: { $0.name() }) { option, _ in
+        option.icon().font(.system(size: 14, weight: .bold))
       }
+      .frame(width: 184)
     }
+    .foregroundStyle(Cloud.night)
     .padding(.leading, 16)
-    .padding(.trailing, 7)
-    .padding(.vertical, 5)
-    .background(RoundedRectangle(cornerRadius: 22, style: .continuous).fill(Cloud.mist))
+    .padding(.trailing, 6)
+    .frame(height: 52)
+    .cloudRecessed(RoundedRectangle(cornerRadius: 20, style: .continuous))
   }
 }
 
@@ -151,12 +104,8 @@ struct ColorsPanel: View {
 
   var body: some View {
     VStack(spacing: 8) {
-      ColorRow(label: "Text", color: viewModel.style.foregroundColor, isPresented: $viewModel.isColorPickerActive) { color in
-        viewModel.style.foregroundColor = color
-      }
-      ColorRow(label: "Background", color: viewModel.style.backgroundColor, isPresented: $viewModel.isBackgroundColorPickerActive) { color in
-        viewModel.style.backgroundColor = color
-      }
+      ColorRow(label: "Text", color: viewModel.style.foregroundColor, isPresented: $viewModel.isColorPickerActive)
+      ColorRow(label: "Background", color: viewModel.style.backgroundColor, isPresented: $viewModel.isBackgroundColorPickerActive)
     }
     .padding(.horizontal, 18)
   }
@@ -166,39 +115,17 @@ struct ColorRow: View {
   let label: String
   let color: Color
   @Binding var isPresented: Bool
-  let onColorSelected: (Color) -> Void
 
   var body: some View {
-    Button {
-      Cloud.tap()
-      isPresented = true
-    } label: {
-      HStack {
-        Text(label).font(Cloud.font(15, .extraBold))
-        Spacer()
-        Circle()
-          .fill(color)
-          .frame(width: 38, height: 38)
-          .overlay(Circle().strokeBorder(Cloud.night, lineWidth: Cloud.line))
-        Image(systemName: "chevron.right")
-          .font(.system(size: 13, weight: .bold))
-          .foregroundStyle(Cloud.quiet)
-          .padding(.horizontal, 6)
-      }
-      .foregroundStyle(Cloud.night)
-      .padding(.leading, 16)
-      .padding(.trailing, 8)
-      .padding(.vertical, 8)
-      .background(RoundedRectangle(cornerRadius: 22, style: .continuous).fill(Cloud.mist))
-      .contentShape(Rectangle())
+    CloudPickerRow(label: label, action: { isPresented = true }) {
+      Circle()
+        .fill(color)
+        .frame(width: 30, height: 30)
+        .overlay(Circle().strokeBorder(Cloud.stroke, lineWidth: Cloud.controlLine))
+        .padding(3)
+        .background(Circle().fill(Cloud.thumb))
     }
-    .buttonStyle(TemplateCardButtonStyle())
     .accessibilityLabel("\(label) color")
-    .popover(isPresented: $isPresented) {
-      ColorPickerView(onColorSelected: onColorSelected)
-        .presentationCompactAdaptation(.sheet)
-        .presentationDetents([.fraction(0.35)])
-    }
   }
 }
 
@@ -209,21 +136,11 @@ struct LayoutPanel: View {
 
   var body: some View {
     VStack(spacing: 8) {
-      HStack(spacing: 8) {
-        ForEach(Shape.allCases, id: \.self) { shape in
-          Button {
-            Cloud.tap()
-            viewModel.style.shape = shape
-          } label: {
-            VStack(spacing: 4) {
-              Image(systemName: shape.icon()).font(.system(size: 18, weight: .semibold))
-              Text(shape.name()).font(Cloud.font(13, .extraBold))
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 62)
-          }
-          .buttonStyle(CloudToggleStyle(isOn: viewModel.style.shape == shape, fill: Cloud.mist, radius: 22))
-          .accessibilityAddTraits(viewModel.style.shape == shape ? .isSelected : [])
+      CloudSegmented(options: Shape.allCases, selection: $viewModel.style.shape, height: 56, radius: 22,
+                     accessibilityLabel: { $0.name() }) { shape, _ in
+        VStack(spacing: 3) {
+          Image(systemName: shape.icon()).font(.system(size: 17, weight: .semibold))
+          Text(shape.name()).font(Cloud.font(13, .extraBold))
         }
       }
       CloudStepperRow(label: "Top and bottom margin", value: CloudStep.format(viewModel.style.verticalPadding),
@@ -248,7 +165,7 @@ struct StylesPanel: View {
         LazyHStack(spacing: 12) {
           ForEach(Style.defaultStyles.indices, id: \.self) { index in
             let preset = Style.defaultStyles[index]
-            PresetThumbnail(text: viewModel.text, style: preset, isSelected: preset === viewModel.style, ring: Cloud.night) {
+            PresetThumbnail(text: viewModel.text, style: preset, isSelected: preset === viewModel.style) {
               Cloud.tap()
               viewModel.apply(preset: preset)
             }
@@ -288,10 +205,10 @@ struct PresetThumbnail: View {
       RenderViewWrapper(text: text, style: thumbnailStyle, onTap: {})
         .allowsHitTesting(false)
         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(Cloud.night, lineWidth: Cloud.line))
-        .cloudEdge(radius: 12, depth: 4)
-        .padding(3)
-        .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).strokeBorder(ring, lineWidth: 4).opacity(isSelected ? 1 : 0))
+        .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(Cloud.stroke, lineWidth: Cloud.controlLine))
+        .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Cloud.edge).offset(y: 3))
+        .padding(4)
+        .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).strokeBorder(ring, lineWidth: 3.5).opacity(isSelected ? 1 : 0))
         .contentShape(Rectangle())
     }
     .buttonStyle(TemplateCardButtonStyle())
@@ -303,14 +220,5 @@ struct PresetThumbnail: View {
   private var thumbnailStyle: Style {
     Style(foregroundColor: style.foregroundColor, backgroundColor: style.backgroundColor, fontSize: 9.5,
           padding: 9, verticalPadding: 10, lineHeight: 1.2, fontName: style.fontName, shape: .fullscreen)
-  }
-}
-
-struct StepperButtonStyle: ButtonStyle {
-  func makeBody(configuration: Configuration) -> some View {
-    configuration.label
-      .scaleEffect(configuration.isPressed ? 0.9 : 1.0)
-      .opacity(configuration.isPressed ? 0.7 : 1.0)
-      .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
   }
 }

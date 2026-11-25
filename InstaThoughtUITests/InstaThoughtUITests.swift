@@ -47,7 +47,27 @@ final class InstaThoughtUITests: XCTestCase {
     // Style
     tap(app.buttons["Make it a page"])
     pause(1.5)
-    tap(app.buttons["Source Sans3"])
+    // Font chooser: jump down the letter rail, star a font, then search for one and pick it.
+    tap(app.buttons["Choose font"])
+    pause(1)
+    let rail = app.otherElements["Jump to letter"]
+    XCTAssertTrue(rail.waitForExistence(timeout: 5))
+    rail.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1))
+      .press(forDuration: 0.1, thenDragTo: rail.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.6)))
+    pause(1.2)
+    // Star whichever font the rail landed on, then pick the one below it.
+    let stars = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Star '")).allElementsBoundByIndex.filter(\.isHittable)
+    XCTAssertGreaterThan(stars.count, 1, "The letter rail should leave fonts in view")
+    tap(stars[0])
+    let picked = String(stars[1].label.dropFirst("Star ".count))
+    tap(app.buttons[picked])
+    pause(1.2)
+    tap(app.textFields.firstMatch)
+    app.textFields.firstMatch.typeText("source")
+    pause(1)
+    tap(app.buttons["Source Sans 3"])
+    pause(1.2)
+    tap(app.buttons["Done"])
     tap(app.buttons["Increase Size"])
     tap(app.buttons["Increase Size"])
     tap(app.buttons["Increase Line spacing"])
@@ -56,9 +76,10 @@ final class InstaThoughtUITests: XCTestCase {
     tap(app.buttons["Color"])
     tap(app.buttons["Background color"])
     pause(1)
-    app.coordinate(withNormalizedOffset: CGVector(dx: 0.45, dy: 0.86)).tap()   // a swatch in the picker
+    tap(app.buttons["Violet 1"])
+    tap(app.buttons["Teal 0"])
     pause(1)
-    dismissSheet()
+    tap(app.buttons["Done"])
 
     tap(app.buttons["Layout"])
     tap(button(containing: "Square"))
