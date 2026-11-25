@@ -15,7 +15,7 @@ struct StyleAndPreviewPage: View {
           Cloud.tap()
           viewModel.shouldNavigateToPreview = true
         }
-        .buttonStyle(CloudChipStyle(fill: Cloud.sun))
+        .buttonStyle(CloudChipStyle(fill: Cloud.sun, ink: Cloud.onSun))
       }
       .cloudBar()
 

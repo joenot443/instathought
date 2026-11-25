@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_1024" translatesAutoresizingMaskIntoConstraints="NO" id="Qb6-wI-OQ0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Qb6-wI-OQ0">
                                 <rect key="frame" x="26.333333333333343" y="268.33333333333326" width="340.66666666666663" height="340.66666666666674"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Qb6-wI-OQ0" secondAttribute="height" multiplier="1:1" id="Pef-39-woc"/>
@@ -23,7 +23,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" red="0.79607843137254897" green="0.94901960784313721" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="LaunchBackground"/>
                         <constraints>
                             <constraint firstItem="Qb6-wI-OQ0" firstAttribute="centerX" secondItem="Bcu-3y-fUS" secondAttribute="centerX" id="WSy-nz-Yib"/>
                             <constraint firstItem="Qb6-wI-OQ0" firstAttribute="centerY" secondItem="Bcu-3y-fUS" secondAttribute="centerY" id="bM6-re-iOv"/>
@@ -38,6 +38,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_1024" width="1024" height="1024"/>
+        <image name="LaunchIcon" width="1024" height="1024"/>
+        <namedColor name="LaunchBackground">
+            <color red="0.79607843137254897" green="0.94901960784313721" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

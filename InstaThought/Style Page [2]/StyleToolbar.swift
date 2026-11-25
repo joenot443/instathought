@@ -86,7 +86,7 @@ struct TypographyPanel: View {
                 .frame(height: 46)
             }
             .buttonStyle(CloudToggleStyle(isOn: viewModel.style.fontName == face, fill: Cloud.white, radius: 23))
-            .overlay(Capsule().strokeBorder(Color(hex: "C9DCE6"), lineWidth: 2).opacity(viewModel.style.fontName == face ? 0 : 1))
+            .overlay(Capsule().strokeBorder(Cloud.faint, lineWidth: 2).opacity(viewModel.style.fontName == face ? 0 : 1))
           }
           Button {
             Cloud.tap()

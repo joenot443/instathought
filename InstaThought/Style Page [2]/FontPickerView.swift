@@ -119,6 +119,7 @@ struct FontRow: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .listRowBackground(Cloud.white)
     }
 
     private var displayName: String {

@@ -27,13 +27,10 @@ struct InstaThoughtApp: App {
         #if DEBUG
         InstaThoughtView(viewModel: viewModel)
           .environmentObject(theme)
-          .preferredColorScheme(.light)
           .task { await ScreenshotScene.current?.apply(to: viewModel) }
         #else
         InstaThoughtView(viewModel: viewModel)
           .environmentObject(theme)
-          // Cloud has no dark palette yet.
-          .preferredColorScheme(.light)
         #endif
       }
     }

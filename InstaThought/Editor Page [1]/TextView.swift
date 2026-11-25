@@ -58,8 +58,8 @@ struct TextEditorView: View {
       ScrollableTextEditor(
         text: $text,
         font: Cloud.uiFont(22, .semibold),
-        textColor: UIColor(Cloud.night),
-        tintColor: UIColor(Cloud.night)
+        textColor: Cloud.uiNight,
+        tintColor: Cloud.uiNight
       )
       .padding(.horizontal, 16)
       .padding(.top, 14)

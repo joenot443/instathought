@@ -10,17 +10,40 @@ import SwiftUI
 import UIKit
 
 enum Cloud {
-  static let sky = Color(hex: "BDE8F7")
-  static let white = Color.white
-  static let night = Color(hex: "14284B")
+  // Each token is (light, dark). Dark mode is a night sky: deep navy behind,
+  // lighter navy surfaces, and near-white ink and outlines where light mode uses navy.
+
+  /// Screen background.
+  static let sky = dynamic("BDE8F7", "0C1A33")
+  /// Surfaces: the bubble, cards, sheets, white buttons.
+  static let white = dynamic("FFFFFF", "1A3159")
+  /// Ink: text, outlines and the solid edge under shapes.
+  static let night = dynamic("14284B", "EAF4FB")
+  /// The next step. The same yellow in both modes; text on it is always `onSun`.
   static let sun = Color(hex: "FFC94D")
-  static let mist = Color(hex: "E4F5FC")
-  /// Secondary text on white or sky.
-  static let quiet = Color(hex: "3C5679")
-  static let placeholder = Color(hex: "7F93AD")
-  /// Outlines of disabled controls.
-  static let soft = Color(hex: "9FB6C9")
+  static let onSun = Color(hex: "14284B")
+  /// Quiet fills: stepper rows, selected tabs.
+  static let mist = dynamic("E4F5FC", "243F6D")
+  /// Secondary text on surfaces or sky.
+  static let quiet = dynamic("3C5679", "AFC6DD")
+  static let placeholder = dynamic("7F93AD", "7D95B7")
+  /// Outlines of disabled controls and inactive dots.
+  static let soft = dynamic("9FB6C9", "4B6894")
+  /// Unselected chip outline.
+  static let faint = dynamic("C9DCE6", "3A5683")
   static let line: CGFloat = 2.5
+
+  /// UIKit version of `night`, for the text view.
+  static let uiNight = dynamicUI("14284B", "EAF4FB")
+
+  private static func dynamicUI(_ light: String, _ dark: String) -> UIColor {
+    let l = UIColor(Color(hex: light)), d = UIColor(Color(hex: dark))
+    return UIColor { $0.userInterfaceStyle == .dark ? d : l }
+  }
+
+  private static func dynamic(_ light: String, _ dark: String) -> Color {
+    Color(uiColor: dynamicUI(light, dark))
+  }
 
   enum Weight: String {
     case regular = "Nunito-Regular", semibold = "Nunito-SemiBold", bold = "Nunito-Bold"
@@ -76,7 +99,7 @@ struct CloudButtonStyle: ButtonStyle {
       .labelStyle(CloudLabelStyle())
       .lineLimit(1)
       .minimumScaleFactor(0.8)
-      .foregroundStyle(isEnabled ? Cloud.night : Cloud.placeholder)
+      .foregroundStyle(isEnabled ? (kind == .sun ? Cloud.onSun : Cloud.night) : Cloud.placeholder)
       .padding(.horizontal, 16)
       .frame(maxWidth: .infinity)
       .frame(height: height)
@@ -91,13 +114,15 @@ struct CloudButtonStyle: ButtonStyle {
 /// Small outlined pill for bar actions (Ideas, Done, Close, Preview).
 struct CloudChipStyle: ButtonStyle {
   var fill: Color = Cloud.white
+  /// Text colour; pass `Cloud.onSun` when the fill is `Cloud.sun`.
+  var ink: Color = Cloud.night
   var round = false
 
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
       .font(Cloud.font(15, .extraBold))
       .labelStyle(CloudLabelStyle(spacing: 6))
-      .foregroundStyle(Cloud.night)
+      .foregroundStyle(ink)
       .padding(.horizontal, round ? 0 : 15)
       .frame(minWidth: 40, minHeight: 40)
       .frame(width: round ? 40 : nil)
@@ -234,6 +259,7 @@ struct CloudToast: View {
     HStack(spacing: 10) {
       Image(systemName: "checkmark")
         .font(.system(size: 13, weight: .black))
+        .foregroundStyle(Cloud.onSun)
         .frame(width: 30, height: 30)
         .background(Circle().fill(Cloud.sun))
         .overlay(Circle().strokeBorder(Cloud.night, lineWidth: Cloud.line))
