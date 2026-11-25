@@ -52,7 +52,6 @@
 		020C77372C9201C2008A47F5 /* Quicksand-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 020C77362C9201C2008A47F5 /* Quicksand-VariableFont_wght.ttf */; };
 		020C77392C920434008A47F5 /* SourceSerif4-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 020C77382C920434008A47F5 /* SourceSerif4-Regular.ttf */; };
 		020C773B2C920D3E008A47F5 /* UIImage+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020C773A2C920D3E008A47F5 /* UIImage+Text.swift */; };
-		020C773E2C921814008A47F5 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 020C773D2C921814008A47F5 /* AlertToast */; };
 		020C77402C921BFC008A47F5 /* SourceSans3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 020C773F2C921BFC008A47F5 /* SourceSans3.ttf */; };
 		027078872C89341E00273775 /* FullPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027078862C89341E00273775 /* FullPreviewView.swift */; };
 		027078892C894F9400273775 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027078882C894F9400273775 /* PhotoService.swift */; };
@@ -71,7 +70,6 @@
 		A1B2C3D40000000000000001 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40000000000000002 /* PrivacyInfo.xcprivacy */; };
 		029160242D8CCCB00089B56F /* OpenColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029160232D8CCA650089B56F /* OpenColor.swift */; };
 		029160262D8E70980089B56F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029160252D8E708B0089B56F /* ViewModel.swift */; };
-		02946D942C8F8FC90029D941 /* FontPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 02946D932C8F8FC90029D941 /* FontPicker */; };
 		029F6BEE2C88CE49007E7081 /* InstaNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F6BED2C88CE49007E7081 /* InstaNoteApp.swift */; };
 		029F6BF02C88CE49007E7081 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F6BEF2C88CE49007E7081 /* TextView.swift */; };
 		029F6BF22C88CE4C007E7081 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 029F6BF12C88CE4C007E7081 /* Assets.xcassets */; };
@@ -159,8 +157,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02946D942C8F8FC90029D941 /* FontPicker in Frameworks */,
-				020C773E2C921814008A47F5 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,10 +323,6 @@
 			dependencies = (
 			);
 			name = InstaThought;
-			packageProductDependencies = (
-				02946D932C8F8FC90029D941 /* FontPicker */,
-				020C773D2C921814008A47F5 /* AlertToast */,
-			);
 			productName = InstaNote;
 			productReference = 029F6BEA2C88CE49007E7081 /* InstaThought.app */;
 			productType = "com.apple.product-type.application";
@@ -381,10 +373,6 @@
 				Base,
 			);
 			mainGroup = 029F6BE12C88CE49007E7081;
-			packageReferences = (
-				02946D922C8F8FC90029D941 /* XCRemoteSwiftPackageReference "FontPicker" */,
-				020C773C2C921814008A47F5 /* XCRemoteSwiftPackageReference "AlertToast" */,
-			);
 			productRefGroup = 029F6BEB2C88CE49007E7081 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -762,37 +750,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		020C773C2C921814008A47F5 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/elai950/AlertToast.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.9;
-			};
-		};
-		02946D922C8F8FC90029D941 /* XCRemoteSwiftPackageReference "FontPicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/franklynw/FontPicker";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.5;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		020C773D2C921814008A47F5 /* AlertToast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 020C773C2C921814008A47F5 /* XCRemoteSwiftPackageReference "AlertToast" */;
-			productName = AlertToast;
-		};
-		02946D932C8F8FC90029D941 /* FontPicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 02946D922C8F8FC90029D941 /* XCRemoteSwiftPackageReference "FontPicker" */;
-			productName = FontPicker;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 029F6BE22C88CE49007E7081 /* Project object */;
 }
